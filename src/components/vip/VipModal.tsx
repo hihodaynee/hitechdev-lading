@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Check, Copy, Sparkles, ExternalLink, ShieldCheck, QrCode, MessageSquare, Users } from 'lucide-react';
+import { X, Check, Copy, Sparkles, ExternalLink, ShieldCheck, QrCode, MessageSquare, Users, Clock } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { Button } from '@/components/ui/Button';
 
@@ -113,32 +113,58 @@ export const VipModal: React.FC<VipModalProps> = ({ isOpen, onClose }) => {
           </div>
           <div className="space-y-1">
             <span className="text-[10px] font-mono text-lime-400 font-bold uppercase tracking-wider block">
-              ZALO VIP // QUÉT MÃ GIAO LƯU
+              {siteConfig.socials.zaloCommunity ? 'ZALO VIP // QUÉT MÃ GIAO LƯU' : 'ZALO VIP // SẮP MỞ LIÊN KẾT'}
             </span>
             <h4 className="text-sm font-bold text-white">Nhóm Zalo: HITech MMO Creator</h4>
             <p className="text-[11px] text-zinc-400">
-              Trao đổi kinh nghiệm làm YouTube, nhận cập nhật bản build mới và tài nguyên kịch bản.
+              {siteConfig.socials.zaloCommunity
+                ? 'Trao đổi kinh nghiệm làm YouTube, nhận cập nhật bản build mới và tài nguyên kịch bản.'
+                : 'Liên kết nhóm Zalo đang được chuẩn bị và sẽ sớm mở tham gia trực tiếp tại đây!'}
             </p>
           </div>
         </div>
 
         {/* Outbound Link to Zalo */}
         <div className="pt-2">
-          <a
-            href={siteConfig.socials.zaloCommunity}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full"
-          >
-            <Button
-              variant="neon-pulse"
-              size="lg"
-              className="w-full text-sm font-bold"
-              icon={<ExternalLink className="w-4 h-4 text-black" />}
+          {siteConfig.socials.zaloCommunity ? (
+            <a
+              href={siteConfig.socials.zaloCommunity}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full"
             >
-              Mở Nhóm Zalo Tham Gia Ngay
-            </Button>
-          </a>
+              <Button
+                variant="neon-pulse"
+                size="lg"
+                className="w-full text-sm font-bold"
+                icon={<ExternalLink className="w-4 h-4 text-black" />}
+              >
+                Mở Nhóm Zalo Tham Gia Ngay
+              </Button>
+            </a>
+          ) : (
+            <div className="space-y-2">
+              <a
+                href={siteConfig.socials.zaloCommunity}
+                onClick={(e) => e.preventDefault()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full cursor-not-allowed"
+              >
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-full text-sm font-semibold border-lime-400/30 text-lime-400 bg-lime-400/5 hover:bg-lime-400/10 cursor-not-allowed"
+                  icon={<Clock className="w-4 h-4 text-lime-400" />}
+                >
+                  Sắp Mở Liên Kết Nhóm Zalo
+                </Button>
+              </a>
+              <p className="text-[11px] text-center text-zinc-400">
+                Nhóm Zalo chính thức đang được chuẩn bị. Bạn có thể lưu mã ưu đãi bên trên trước!
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

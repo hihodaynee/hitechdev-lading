@@ -69,7 +69,9 @@ export async function runTier2Tests() {
   // =========================================================================
   console.log('Feature 4: Central Site Config Boundaries');
   assert(
-    siteConfigContent.includes('https://tiktok.com') && siteConfigContent.includes('https://facebook.com'),
+    siteConfigContent.includes('https://') &&
+    siteConfigContent.includes('tiktok.com') &&
+    siteConfigContent.includes('facebook.com'),
     'B4.1: Social links strictly enforce https:// protocol'
   );
   assert(

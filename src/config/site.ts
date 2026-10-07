@@ -79,13 +79,13 @@ export const siteConfig: SiteConfig = {
   description:
     'Tự động hoá sản xuất video MMO bằng AI. Tạo video Seedance & ảnh Seedream Miễn Phí, bắt trend YouTube chuyên sâu và xuất thẳng CapCut Desktop.',
   socials: {
-    tiktok: 'https://tiktok.com/@hitech.mmo',
-    facebook: 'https://facebook.com/hitech.mmo',
-    zaloCommunity: 'https://zalo.me/g/hitechmmo-vip',
+    tiktok: 'https://www.tiktok.com/@hi.tech.mmo',
+    facebook: 'https://www.facebook.com/profile.php?id=61594632656414',
+    zaloCommunity: '',
   },
   vipCouponCode: 'HITECHVIP2026',
   aiStudioDownloadUrl:
-    'https://github.com/hihodaynee/ai-studio-releases/releases/download/v0.1.0-dev.18/HITechDev.AIStudio.F0-beta-Setup.exe',
+    'https://github.com/hihodaynee/ai-studio-releases/releases/download/v1.0.0/HITechDev.AIStudio.F0-stable-Setup.exe',
   downloadLabel: 'Tải AI Studio',
   vipPerks: [
     {
@@ -398,7 +398,7 @@ export const siteConfig: SiteConfig = {
       problemSolved:
         'Tiết kiệm 90% thời gian sáng tạo: Không bí ý tưởng, không văn mẫu AI, không lệch nhân vật và 0đ phí API tạo video/ảnh.',
       downloadUrl:
-        'https://github.com/hihodaynee/ai-studio-releases/releases/download/v0.1.0-dev.18/HITechDev.AIStudio.F0-beta-Setup.exe',
+        'https://github.com/hihodaynee/ai-studio-releases/releases/download/v1.0.0/HITechDev.AIStudio.F0-stable-Setup.exe',
       downloadLabel: 'Tải AI Studio',
       badges: [
         'Seedance Video MIỄN PHÍ',

@@ -10,7 +10,7 @@ import {
   Mic,
   Scissors,
   Wrench,
-  Maximize2,
+  ZoomIn,
   Download,
 } from 'lucide-react';
 import { siteConfig } from '@/config/site';
@@ -109,8 +109,8 @@ export const AiStudioCard: React.FC<AiStudioCardProps> = () => {
           <div className="my-5 space-y-2.5">
             <div className="flex items-center justify-between text-xs font-mono">
               <span className="text-zinc-300 uppercase tracking-wider flex items-center gap-1.5">
-                <ImageIcon className="w-3.5 h-3.5 text-lime-400" />
-                Giao Diện Thực Tế (Click phóng to):
+                <ZoomIn className="w-3.5 h-3.5 text-lime-400" />
+                Giao Diện Thực Tế (Kính lúp zoom ảnh):
               </span>
               <span className="text-lime-400">100% HOÀN THIỆN</span>
             </div>
@@ -121,6 +121,7 @@ export const AiStudioCard: React.FC<AiStudioCardProps> = () => {
                   key={idx}
                   onClick={() => setActiveScreenshot(idx)}
                   className="group/shot relative rounded-2xl overflow-hidden border border-white/10 bg-black/60 cursor-pointer hover:border-lime-400/40 transition-all hover:scale-[1.01]"
+                  title="Click để mở kính lúp phóng to"
                 >
                   <div className="aspect-[16/9] w-full overflow-hidden bg-zinc-950 relative">
                     <img
@@ -130,8 +131,9 @@ export const AiStudioCard: React.FC<AiStudioCardProps> = () => {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/20" />
-                    <div className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/60 backdrop-blur-md text-zinc-300 group-hover/shot:text-lime-400 transition-colors">
-                      <Maximize2 className="w-3.5 h-3.5" />
+                    <div className="absolute top-2 right-2 px-2 py-1 rounded-lg bg-black/75 backdrop-blur-md text-zinc-300 group-hover/shot:text-lime-400 group-hover/shot:border-lime-400/40 border border-white/10 transition-all flex items-center gap-1 text-[11px] font-mono">
+                      <ZoomIn className="w-3.5 h-3.5 text-lime-400" />
+                      <span className="hidden sm:inline">Zoom ảnh</span>
                     </div>
                     <div className="absolute bottom-2 left-2 right-2">
                       <h5 className="text-xs font-bold text-white group-hover/shot:text-lime-400 transition-colors">

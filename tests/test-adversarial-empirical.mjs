@@ -242,9 +242,9 @@ async function runAdversarialTests() {
 
   // Central config protocol & coupon exactness
   assert(siteConfigContent.includes("'HITECHVIP2026'"), 'Vip coupon code is strictly HITECHVIP2026');
-  assert(siteConfigContent.includes("https://tiktok.com/@hitech.mmo"), 'TikTok link is properly formatted');
-  assert(siteConfigContent.includes("https://facebook.com/hitech.mmo"), 'Facebook link is properly formatted');
-  assert(siteConfigContent.includes("https://zalo.me/g/hitechmmo-vip"), 'Zalo link is properly formatted');
+  assert(siteConfigContent.includes("https://www.tiktok.com/@hi.tech.mmo"), 'TikTok link is properly formatted');
+  assert(siteConfigContent.includes("https://www.facebook.com/profile.php?id=61594632656414"), 'Facebook link is properly formatted');
+  assert(siteConfigContent.includes("zaloCommunity: ''") || siteConfigContent.includes('zaloCommunity: ""'), 'Zalo link is configured as pending');
 
   // =========================================================================
   // SUMMARY

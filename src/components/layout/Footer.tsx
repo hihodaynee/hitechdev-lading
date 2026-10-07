@@ -84,11 +84,12 @@ export const Footer: React.FC = () => {
               </a>
 
               <a
-                href={siteConfig.socials.zaloCommunity}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={siteConfig.socials.zaloCommunity || '#vip'}
+                target={siteConfig.socials.zaloCommunity ? '_blank' : undefined}
+                rel={siteConfig.socials.zaloCommunity ? 'noopener noreferrer' : undefined}
                 className="w-9 h-9 rounded-xl bg-white/[0.05] hover:bg-lime-400 hover:text-black text-zinc-300 border border-white/10 flex items-center justify-center transition-all"
                 aria-label="Zalo Community"
+                title={siteConfig.socials.zaloCommunity ? 'Zalo Community' : 'Nhóm Zalo (Sắp mở liên kết)'}
               >
                 <ZaloIcon className="w-4 h-4" />
               </a>
@@ -133,12 +134,12 @@ export const Footer: React.FC = () => {
               Nhận voucher 20% <span className="font-mono text-lime-400 font-bold">{siteConfig.vipCouponCode}</span> và trao đổi kỹ thuật trực tiếp cùng chuyên gia MMO.
             </p>
             <a
-              href={siteConfig.socials.zaloCommunity}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={siteConfig.socials.zaloCommunity || '#vip'}
+              target={siteConfig.socials.zaloCommunity ? '_blank' : undefined}
+              rel={siteConfig.socials.zaloCommunity ? 'noopener noreferrer' : undefined}
               className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-lime-400 hover:underline"
             >
-              <span>Truy cập nhóm Zalo ngay</span>
+              <span>{siteConfig.socials.zaloCommunity ? 'Truy cập nhóm Zalo ngay' : 'Sắp mở liên kết nhóm'}</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
