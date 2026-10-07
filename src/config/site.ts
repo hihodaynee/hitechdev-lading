@@ -1,0 +1,607 @@
+export interface SocialLink {
+  name: string;
+  url: string;
+  icon: string;
+}
+
+export interface VipPerk {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface ProductFeature {
+  title: string;
+  description: string;
+  group?: string;
+  tag?: string;
+  highlight?: boolean;
+}
+
+export interface ProductInfo {
+  name: string;
+  tagline: string;
+  status: 'LIVE' | 'COMING_SOON';
+  statusLabel: string;
+  description: string;
+  targetAudience?: string;
+  problemSolved?: string;
+  downloadUrl?: string;
+  downloadLabel?: string;
+  features: ProductFeature[];
+  badges: string[];
+  metrics: { value: string; label: string }[];
+  screenshots?: {
+    title: string;
+    description: string;
+    image: string;
+  }[];
+}
+
+export interface FeatureGroup {
+  id: string;
+  number: string;
+  title: string;
+  icon: string;
+  features: ProductFeature[];
+}
+
+export interface SiteConfig {
+  name: string;
+  tagline: string;
+  description: string;
+  socials: {
+    tiktok: string;
+    facebook: string;
+    zaloCommunity: string;
+  };
+  vipCouponCode: string;
+  aiStudioDownloadUrl: string;
+  downloadLabel: string;
+  vipPerks: VipPerk[];
+  aiStudioGroups: FeatureGroup[];
+  autoVideoGroups: FeatureGroup[];
+  products: {
+    aiStudio: ProductInfo;
+    autoVideo: ProductInfo;
+  };
+  methodologySteps: {
+    step: string;
+    title: string;
+    description: string;
+    tech: string[];
+  }[];
+}
+
+export const siteConfig: SiteConfig = {
+  name: 'HITech MMO',
+  tagline: 'TECH • DIGITAL • MMO',
+  description:
+    'Tự động hoá sản xuất video MMO bằng AI. Tạo video Seedance & ảnh Seedream Miễn Phí, bắt trend YouTube chuyên sâu và xuất thẳng CapCut Desktop.',
+  socials: {
+    tiktok: 'https://tiktok.com/@hitech.mmo',
+    facebook: 'https://facebook.com/hitech.mmo',
+    zaloCommunity: 'https://zalo.me/g/hitechmmo-vip',
+  },
+  vipCouponCode: 'HITECHVIP2026',
+  aiStudioDownloadUrl:
+    'https://github.com/hihodaynee/ai-studio-releases/releases/download/v0.1.0-dev.18/HITechDev.AIStudio.F0-beta-Setup.exe',
+  downloadLabel: 'Tải AI Studio',
+  vipPerks: [
+    {
+      title: 'Giao Lưu & Trao Đổi Làm YouTube',
+      description: 'Cộng đồng Creator chia sẻ kinh nghiệm thực chiến, mẹo giữ chân người xem và bắt trend YouTube.',
+      icon: 'Users',
+    },
+    {
+      title: 'Cập Nhật Tool & Tính Năng Sớm Nhất',
+      description: 'Nhận thông báo cập nhật các bản build mới và tiến độ ra mắt Auto Video trực tiếp từ dev.',
+      icon: 'Flame',
+    },
+    {
+      title: 'Kho Prompt & Kịch Bản Triệu View',
+      description: 'Tặng bộ Style Prompts V2 và cấu trúc kịch bản phân bổ nhịp chuẩn cho video dài & Shorts.',
+      icon: 'BookOpenCheck',
+    },
+    {
+      title: 'Hỗ Trợ Kỹ Thuật Trực Tiếp',
+      description: 'Giải đáp thắc mắc về cài đặt, cấu hình tài khoản và tối ưu workflow làm video.',
+      icon: 'Headset',
+    },
+  ],
+  aiStudioGroups: [
+    {
+      id: 'group-1',
+      number: 'NHÓM 1',
+      title: 'Sáng Tạo Nội Dung & Ý Tưởng',
+      icon: 'PenTool',
+      features: [
+        {
+          title: '✍️ Xưởng Kịch Bản (Script Studio)',
+          description:
+            'Quy trình 6 bước: Ý tưởng → Dữ kiện → Dàn ý → Viết nháp → Biên tập → Hoàn chỉnh. Lọc sạch văn mẫu AI (Humanize), câu từ chia nhịp thở tự nhiên. Xuất chuẩn 100% tiếng Anh hoặc tiếng Việt.',
+          group: 'NHÓM 1',
+          tag: 'Kịch Bản 6 Bước',
+          highlight: false,
+        },
+        {
+          title: '🎨 Tiêu Đề & Thumbnail (Thumbnail & Title Studio)',
+          description:
+            'Tự động phân tích kịch bản gợi ý 3–5 phong cách tiêu đề giật tít (tò mò, tranh cãi, bài học) và prompt thumbnail đồng bộ BrandKit.',
+          group: 'NHÓM 1',
+          tag: 'Hook & CTR',
+          highlight: false,
+        },
+        {
+          title: '📈 Bắt Trend YouTube (YouTube Trending)',
+          description:
+            'Công cụ phân tích và nghiên cứu làm video YouTube chuyên sâu: Quét từ khóa, video thịnh hành theo ngách để đón đầu xu hướng.',
+          group: 'NHÓM 1',
+          tag: 'Nghiên Cứu YouTube',
+          highlight: true,
+        },
+      ],
+    },
+    {
+      id: 'group-2',
+      number: 'NHÓM 2',
+      title: 'Sản Xuất Âm Thanh & Phụ Đề',
+      icon: 'Mic',
+      features: [
+        {
+          title: '🎙️ Lồng Tiếng AI (Voice Studio / TTS Offline)',
+          description:
+            'Giọng đọc truyền cảm phòng thu. Chạy Offline qua Supertonic (ONNX) không tốn phí API, không cần mạng. Hỗ trợ Edge-TTS & ElevenLabs.',
+          group: 'NHÓM 2',
+          tag: 'Supertonic Offline 0đ',
+          highlight: true,
+        },
+        {
+          title: '⏱️ Tạo Phụ Đề Chuẩn Xác (Script SRT Studio / ASR)',
+          description:
+            'Faster-Whisper nghe và tạo phụ đề tự động. Khớp từng từ (Word-level) độ trễ ~0s, AI gộp câu thông minh không đè timeline.',
+          group: 'NHÓM 2',
+          tag: 'Word-Level Timing',
+          highlight: false,
+        },
+      ],
+    },
+    {
+      id: 'group-3',
+      number: 'NHÓM 3',
+      title: 'Sản Xuất Hình Ảnh & Video',
+      icon: 'Film',
+      features: [
+        {
+          title: '🎬 Phân Cảnh & Giữ Nhân Vật (Image Prompt Studio)',
+          description:
+            'Băm kịch bản theo SRT thành từng cảnh và viết prompt. Khóa khuôn mặt nhân vật chính xuyên suốt (Cast Consistency) không biến dạng.',
+          group: 'NHÓM 3',
+          tag: 'Cast Consistency',
+          highlight: false,
+        },
+        {
+          title: '🖼️ Sinh Ảnh Seedream MIỄN PHÍ (Image Studio)',
+          description:
+            'Tạo ảnh hàng loạt qua Dola Seedream MIỄN PHÍ hoặc Flow. Đa luồng 1–5 luồng song song, tạo 50–100 ảnh chỉ vài phút.',
+          group: 'NHÓM 3',
+          tag: 'Seedream MIỄN PHÍ',
+          highlight: true,
+        },
+        {
+          title: '🎥 Tạo Video Seedance MIỄN PHÍ (Video Studio)',
+          description:
+            'Biến ảnh tĩnh thành video mượt mà qua Dola Seedance MIỄN PHÍ hoặc Google Flow. Xoay vòng tài khoản, tự bù cảnh thiếu, xem trước Lightbox H.264.',
+          group: 'NHÓM 3',
+          tag: 'Seedance MIỄN PHÍ',
+          highlight: true,
+        },
+      ],
+    },
+    {
+      id: 'group-4',
+      number: 'NHÓM 4',
+      title: 'Dựng Phim & Xuất Bản',
+      icon: 'Scissors',
+      features: [
+        {
+          title: '✂️ Dựng Video & Ghép Khớp (Composer Workspace)',
+          description:
+            'Đồng bộ audio, SRT và hình ảnh/video vào 1 timeline. Nút 1-Click "Thay ảnh bằng video đã tạo" không làm xô lệch thời gian phụ đề.',
+          group: 'NHÓM 4',
+          tag: '1-Click Thay Video',
+          highlight: false,
+        },
+        {
+          title: '⚡ Xuất Thẳng Sang CapCut Desktop (CapCut Integration)',
+          description:
+            '1 nút bấm mở trực tiếp trên CapCut Desktop: Toàn bộ video, ảnh, audio và phụ đề đã nằm ngay ngắn trên timeline sẵn sàng render.',
+          group: 'NHÓM 4',
+          tag: 'CapCut Desktop Native',
+          highlight: true,
+        },
+      ],
+    },
+    {
+      id: 'group-5',
+      number: 'NHÓM 5',
+      title: 'Tiện Ích & Quản Trị Hệ Thống',
+      icon: 'Wrench',
+      features: [
+        {
+          title: '🚀 Công Cụ Nhanh (Quick Tools)',
+          description:
+            'Tạo ảnh và video nhanh không cần lập dự án phức tạp. Phù hợp test prompt hoặc làm video ngắn lẻ.',
+          group: 'NHÓM 5',
+          tag: 'Tạo Nhanh',
+          highlight: false,
+        },
+        {
+          title: '🏷️ BrandKit Nhân Vật & Phong Cách',
+          description:
+            'Quản lý kịch bản, nhân vật đại diện và phong cách hình ảnh đồng bộ cùng một nơi.',
+          group: 'NHÓM 5',
+          tag: 'BrandKit',
+          highlight: false,
+        },
+      ],
+    },
+  ],
+  autoVideoGroups: [
+    {
+      id: 'av-group-1',
+      number: 'NHÓM 1',
+      title: 'Cào & Tải Video Tự Động (Scraper)',
+      icon: 'Download',
+      features: [
+        {
+          title: '📥 Tải Hàng Loạt Qua 1 Link',
+          description:
+            'Dán link kênh Douyin/TikTok/YouTube/Bilibili, chọn số lượng và tải về máy hàng loạt chất lượng cao không watermark.',
+          group: 'NHÓM 1',
+          tag: '1-Click Scraper',
+          highlight: false,
+        },
+        {
+          title: '🛡️ Tự Nhớ Chống Tải Trùng & Upload 5GB',
+          description:
+            'Tự nhớ video đã tải tránh cào lại. Tự nhận diện cookie từ trình duyệt tải nét nhất. Hỗ trợ upload video từ máy tới 5GB.',
+          group: 'NHÓM 1',
+          tag: 'Chống Trùng & 5GB',
+          highlight: true,
+        },
+      ],
+    },
+    {
+      id: 'av-group-2',
+      number: 'NHÓM 2',
+      title: 'Hậu Kỳ & Lồng Tiếng AI (3 Chế Độ)',
+      icon: 'Cpu',
+      features: [
+        {
+          title: '🌐 Dịch & Thuyết Minh Video Nước Ngoài',
+          description:
+            'Demucs tách vocal giữ nguyên nhạc nền. Faster-Whisper tạo sub mili-giây. Dịch tự nhiên, tự gọt câu (TTS Budget Fitting) khớp khẩu hình nhân vật. Lồng tiếng đa giọng.',
+          group: 'NHÓM 2',
+          tag: 'Dịch & Thuyết Minh',
+          highlight: true,
+        },
+        {
+          title: '🍳 Bình Luận Trực Quan (Visual Commentary)',
+          description:
+            'Cho video nấu ăn, thủ công, unboxing: AI nhìn hiểu hành động trên màn hình, tự viết lời bình dí dỏm và tự hạ nhạc nền khi có tiếng nói.',
+          group: 'NHÓM 2',
+          tag: 'Visual Commentary',
+          highlight: true,
+        },
+        {
+          title: '🍿 Tóm Tắt & Review Phim (Movie Review)',
+          description:
+            'AI phân tích cốt truyện, hiểu logic nhân vật (không bịa tên), tự viết tóm tắt và tự chọn cảnh đắt giá ghép thành video review hoàn chỉnh.',
+          group: 'NHÓM 2',
+          tag: 'Review Phim EDL',
+          highlight: true,
+        },
+      ],
+    },
+    {
+      id: 'av-group-3',
+      number: 'NHÓM 3',
+      title: 'Xưởng Biên Tập Trực Quan (Video Editor)',
+      icon: 'Palette',
+      features: [
+        {
+          title: '👁️ Preview 4K & Kéo Thả Trực Quan',
+          description:
+            'Xem trước 4K (3840x2160), kéo thả phụ đề, cỡ chữ, màu sắc, bóng đổ; chèn logo & watermark tùy ý.',
+          group: 'NHÓM 3',
+          tag: 'Preview 4K',
+          highlight: false,
+        },
+        {
+          title: '🌫️ Che Mờ Thông Minh (Blur Tool)',
+          description:
+            'Vẽ khung che mờ tự do giấu logo gốc của video cũ hoặc thông tin riêng tư nhanh chóng.',
+          group: 'NHÓM 3',
+          tag: 'Blur Logo',
+          highlight: false,
+        },
+        {
+          title: '📱 Tự Đổi Dọc/Ngang & Tự Chia Tập',
+          description:
+            'Shorts 9:16 (blur nền nghệ thuật) hoặc 16:9 ngang. Video dài > 3 phút tự cắt thành Tập 1, Tập 2, Tập 3...',
+          group: 'NHÓM 3',
+          tag: 'Shorts & Chia Tập',
+          highlight: true,
+        },
+      ],
+    },
+    {
+      id: 'av-group-4',
+      number: 'NHÓM 4',
+      title: 'Ghép Ảnh Theo Voice & Xuất CapCut',
+      icon: 'Image',
+      features: [
+        {
+          title: '🎙️ Tách Chữ & Khớp Ảnh Theo Lời Nói',
+          description:
+            'Tải file giọng đọc lên, AI xuất phụ đề chuẩn từng giây. Ném 20–30 ảnh vào, tự tính thời gian chuyển cảnh ăn khớp câu nói (cho sách nói, truyện ma, tin tức).',
+          group: 'NHÓM 4',
+          tag: 'Khớp Ảnh Tự Động',
+          highlight: true,
+        },
+        {
+          title: '⚡ Bắn Thẳng Dự Án Sang CapCut Desktop',
+          description:
+            '1 nút bấm mở trực tiếp trên CapCut Desktop: Đầy đủ kịch bản, ảnh, phụ đề, âm thanh trên timeline.',
+          group: 'NHÓM 4',
+          tag: 'CapCut Desktop Native',
+          highlight: true,
+        },
+      ],
+    },
+    {
+      id: 'av-group-5',
+      number: 'NHÓM 5',
+      title: 'Viết Bài & Lên Lịch Đa Nền Tảng (Scheduler)',
+      icon: 'Calendar',
+      features: [
+        {
+          title: '🔗 Kết Nối Đa Kênh YouTube, TikTok, Facebook',
+          description:
+            'Liên kết trực tiếp tài khoản phân phối video tự động và an toàn.',
+          group: 'NHÓM 5',
+          tag: 'Đa Nền Tảng',
+          highlight: false,
+        },
+        {
+          title: '✍️ AI Viết Tiêu Đề, Tạo Thumbnail & Hẹn Giờ',
+          description:
+            'AI viết tiêu đề/mô tả chuẩn SEO + hashtag, tự bắt frame làm thumbnail hút click, hẹn giờ đăng tự động cả tuần/tháng.',
+          group: 'NHÓM 5',
+          tag: 'SEO & Hẹn Giờ',
+          highlight: true,
+        },
+      ],
+    },
+  ],
+  products: {
+    aiStudio: {
+      name: 'AI Studio',
+      tagline: 'All-in-One AI Content Creation Workbench cho Content Creator & MMO',
+      status: 'LIVE',
+      statusLabel: 'LIVE / HOÀN THIỆN',
+      description:
+        'Sản xuất video AI hoàn chỉnh từ ý tưởng đến CapCut Desktop. Tạo Video Seedance & Ảnh Seedream MIỄN PHÍ, nghiên cứu YouTube chuyên sâu, giữ nhân vật đồng nhất 100%.',
+      targetAudience:
+        'Content Creator, kênh faceless, người làm MMO, đội ngũ sản xuất video YouTube/TikTok.',
+      problemSolved:
+        'Tiết kiệm 90% thời gian sáng tạo: Không bí ý tưởng, không văn mẫu AI, không lệch nhân vật và 0đ phí API tạo video/ảnh.',
+      downloadUrl:
+        'https://github.com/hihodaynee/ai-studio-releases/releases/download/v0.1.0-dev.18/HITechDev.AIStudio.F0-beta-Setup.exe',
+      downloadLabel: 'Tải AI Studio',
+      badges: [
+        'Seedance Video MIỄN PHÍ',
+        'Seedream Image MIỄN PHÍ',
+        'YouTube Trending Analytics',
+        'Offline Supertonic TTS',
+        'Cast Consistency Lock',
+        '1-Click CapCut Native',
+      ],
+      metrics: [
+        { value: '0đ Phí', label: 'Video Seedance & Ảnh Seedream' },
+        { value: '6 Bước', label: 'Quy trình Kịch bản Chuẩn' },
+        { value: '1-Click', label: 'Thay ảnh bằng video khớp timeline' },
+        { value: 'CapCut', label: 'Xuất thẳng Native Draft Desktop' },
+      ],
+      screenshots: [
+        {
+          title: 'Quy Trình Video Toàn Vòng Đời',
+          description:
+            'Từ kịch bản AI, nhân vật, voice, phụ đề, cảnh & ảnh (132/132) đến timeline CapCut.',
+          image: '/screenshots/ai-studio-workflow.png',
+        },
+        {
+          title: 'BrandKit Nhân Vật & Phong Cách',
+          description:
+            'Kịch bản, nhân vật đại diện và phong cách hình ảnh cùng một nơi.',
+          image: '/screenshots/ai-studio-brandkit.png',
+        },
+      ],
+      features: [
+        {
+          title: '✍️ Xưởng Kịch Bản (Script Studio)',
+          description:
+            'Quy trình 6 bước chuẩn: Ý tưởng → Dữ kiện → Dàn ý → Viết nháp → Biên tập → Hoàn chỉnh. Lọc sạch văn mẫu AI, câu từ tự nhiên chuẩn nhịp thở.',
+          tag: 'Quy Trình 6 Bước',
+          highlight: false,
+        },
+        {
+          title: '🎨 Tiêu Đề & Thumbnail (Thumbnail & Title Studio)',
+          description:
+            'Gợi ý 3–5 phong cách tiêu đề giật tít (tò mò, tranh cãi, bài học) và prompt thumbnail đồng bộ BrandKit.',
+          tag: 'Hook & CTR Cao',
+          highlight: false,
+        },
+        {
+          title: '📈 Bắt Trend YouTube (YouTube Trending Analytics)',
+          description:
+            'Công cụ phân tích nghiên cứu làm video YouTube chuyên sâu: Nắm bắt chủ đề, từ khóa nóng hổi đón đầu lượt xem.',
+          tag: 'YouTube Analytics',
+          highlight: true,
+        },
+        {
+          title: '🎙️ Lồng Tiếng AI (Voice Studio / TTS Offline)',
+          description:
+            'Supertonic (ONNX) chạy Offline cục bộ không cần mạng, không tốn phí API. Đa dạng giọng đọc nam/nữ truyền cảm.',
+          tag: 'Supertonic Offline 0đ',
+          highlight: true,
+        },
+        {
+          title: '⏱️ Tạo Phụ Đề Chuẩn Xác (Script SRT Studio / ASR)',
+          description:
+            'Faster-Whisper nhận diện giọng nói tự động. Mốc thời gian từng từ độ trễ ~0s, AI gộp câu thông minh không đè timeline.',
+          tag: 'Word-Level Timing',
+          highlight: false,
+        },
+        {
+          title: '🎬 Phân Cảnh & Prompt Hình Ảnh (Image Prompt Studio)',
+          description:
+            'Băm kịch bản theo SRT thành từng cảnh. Khóa khuôn mặt nhân vật chính xuyên suốt hàng chục cảnh (Cast Consistency) không biến dạng.',
+          tag: 'Cast Consistency',
+          highlight: false,
+        },
+        {
+          title: '🖼️ Sinh Ảnh Hàng Loạt (Image Studio - Dola Seedream MIỄN PHÍ)',
+          description:
+            'Tạo ảnh hàng loạt qua Dola Seedream MIỄN PHÍ. Xử lý đa luồng 1–5 luồng song song, tạo 50–100 ảnh chỉ vài phút.',
+          tag: 'Seedream MIỄN PHÍ',
+          highlight: true,
+        },
+        {
+          title: '🎥 Tạo Video từ Ảnh (Video Studio - Dola Seedance MIỄN PHÍ & Google Flow)',
+          description:
+            'Biến ảnh tĩnh thành video mượt mà qua Dola Seedance MIỄN PHÍ hoặc Google Flow. Xoay vòng tài khoản, tự bù cảnh thiếu.',
+          tag: 'Seedance MIỄN PHÍ',
+          highlight: true,
+        },
+        {
+          title: '✂️ Dựng Video & Ghép Khớp (Composer Workspace)',
+          description:
+            'Đồng bộ audio, SRT và hình ảnh/video. Nút 1-Click "Thay ảnh bằng video đã tạo" không làm xô lệch thời gian phụ đề.',
+          tag: '1-Click Replace',
+          highlight: false,
+        },
+        {
+          title: '⚡ Xuất Thẳng Sang CapCut (CapCut Integration)',
+          description:
+            '1 click mở trực tiếp trên CapCut Desktop: Toàn bộ video, ảnh, audio và phụ đề đã nằm ngay ngắn trên timeline.',
+          tag: 'CapCut Desktop Native',
+          highlight: true,
+        },
+        {
+          title: '🚀 Công Cụ Nhanh (Quick Tools)',
+          description:
+            'Tạo ảnh và video nhanh không cần lập dự án phức tạp. Phù hợp test prompt hoặc làm video ngắn lẻ.',
+          tag: 'Quick Create',
+          highlight: false,
+        },
+      ],
+    },
+    autoVideo: {
+      name: 'Auto Video',
+      tagline: 'Cỗ máy tự động hoá sản xuất video đa kênh từ Douyin sang YouTube, TikTok & Facebook',
+      status: 'COMING_SOON',
+      statusLabel: 'SẮP RA MẮT',
+      description:
+        'Cỗ máy tự động hoá video đa kênh: Cào video sạch watermark, tách vocal Demucs, phụ đề Faster-Whisper, dịch gọt câu khớp khẩu hình (TTS Fitting), editor 4K kéo thả và lên lịch đăng đa nền tảng.',
+      targetAudience:
+        'Creator, kênh Review phim/truyện, kênh tin tức, Affiliate, kênh reup/dịch video nước ngoài.',
+      problemSolved:
+        'Tiết kiệm 90% thời gian dựng video: Thay vì mất hàng giờ chép sub, thu âm, canh frame — AI tự động hoá khép kín.',
+      badges: [
+        'SẮP RA MẮT',
+        '1-Pass FFmpeg Engine',
+        'Meta Demucs Vocal Split',
+        'Faster-Whisper INT8',
+        'TTS Budget Fitting',
+        '3 Chế độ MMO',
+      ],
+      metrics: [
+        { value: '90%', label: 'Tiết kiệm thời gian hậu kỳ' },
+        { value: '1-Pass', label: 'Render duy nhất 1 lần' },
+        { value: '100%', label: 'Tách vocal sạch bằng Demucs' },
+        { value: '0s', label: 'Lệch tiếng trễ hình (Zero-Desync)' },
+      ],
+      screenshots: [
+        {
+          title: 'Tạo Project Video & Cào Đa Kênh',
+          description:
+            'Tải qua link Douyin, TikTok, YouTube, Bilibili hoặc upload video từ máy tới 5GB. 3 workflow chuyên biệt.',
+          image: '/screenshots/autovideo-intake.png',
+        },
+        {
+          title: 'Hậu Kỳ: Video Editor Trực Quan',
+          description:
+            'Preview 4K (3840x2160), kéo thả phụ đề, che mờ (Blur) logo cũ và cấu hình giọng đọc AI.',
+          image: '/screenshots/autovideo-editor.png',
+        },
+      ],
+      features: [
+        {
+          title: 'Auto Scraper Douyin (Bỏ qua Cookie & Watermark)',
+          description:
+            'Tải hàng loạt chỉ 1 đường link, không lo tải trùng, tự nhận diện cookie từ trình duyệt tải chất lượng gốc không watermark. Hỗ trợ upload video tới 5GB.',
+          tag: 'No-Watermark Scraper',
+        },
+        {
+          title: 'Meta Demucs AI & Faster-Whisper INT8',
+          description:
+            'Tách sạch 100% vocal tiếng Trung giữ nguyên nhạc nền. Faster-Whisper nhận diện phụ đề chính xác từng mili-giây kết hợp Silero VAD lọc hơi thở.',
+          tag: 'Meta Demucs',
+        },
+        {
+          title: 'Contextual Translation & TTS Budget Fitting',
+          description:
+            'Dịch ngữ cảnh 14 ngôn ngữ, tự động tính toán từ/giây và nén câu chữ vừa khít thời lượng cảnh, bù trễ timeline -0.35s triệt tiêu lệch hình trễ tiếng.',
+          tag: 'Zero-Desync TTS',
+        },
+        {
+          title: '3 Workflow Độc Lập Cho Từng Ngách MMO',
+          description:
+            'Chế độ 1: Reup chéo nền tảng (tự chia phần Part 1-2-3). Chế độ 2: Bình luận trực quan (Visual Commentary - AI Vision bóc tách frame cho ẩm thực, đập hộp, auto ducking). Chế độ 3: Tóm tắt phim thông minh (Story Contract & EDL).',
+          tag: '3 Workflows',
+        },
+        {
+          title: '1-Pass FFmpeg Render & Lên Lịch Đa Kênh',
+          description:
+            'Filter complex gộp blur nền Shorts 9:16, che sub cũ, burn sub ASS, chèn logo chỉ trong 1 lần transcode GPU NVENC/QSV. Tự tạo thumbnail và lên lịch YouTube, TikTok, Facebook.',
+          tag: '1-Pass Render',
+        },
+      ],
+    },
+  },
+  methodologySteps: [
+    {
+      step: '01',
+      title: 'Thu Thập & Phân Tích Chuyên Sâu',
+      description:
+        'Cào tự động video Douyin/TikTok chất lượng gốc sạch watermark hoặc phân tích từ khóa YouTube Trending. Bóc tách giọng nói bằng Meta Demucs AI và nhận dạng phụ đề mili-giây bằng Faster-Whisper.',
+      tech: ['YouTube Trending', 'Meta Demucs htdemucs', 'Faster-Whisper INT8', 'Silero VAD'],
+    },
+    {
+      step: '02',
+      title: 'Xử Lý Ngữ Cảnh & Tạo Media Miễn Phí',
+      description:
+        'Kịch bản 6 bước lọc sạch văn mẫu, tạo ảnh Dola Seedream MIỄN PHÍ và tạo video Seedance MIỄN PHÍ. Khóa chặt nhân vật Cast Consistency và Supertonic TTS offline không tốn phí API.',
+      tech: ['Seedance Video Free', 'Seedream Image Free', 'Cast Consistency', 'Supertonic Offline'],
+    },
+    {
+      step: '03',
+      title: 'Xuất Bản 1-Pass & CapCut Desktop',
+      description:
+        'Tự động thay ảnh bằng video 1-click trên timeline, xuất thẳng bản thảo CapCut Native Drafts hoặc render 1-pass FFmpeg hỗ trợ GPU, lên lịch đăng video đa kênh.',
+      tech: ['CapCut Native Drafts', '1-Click Video Replace', '1-Pass FFmpeg GPU', 'Multi-Platform Scheduler'],
+    },
+  ],
+};
