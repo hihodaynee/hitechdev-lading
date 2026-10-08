@@ -396,9 +396,44 @@ assert(
 );
 
 // -----------------------------------------------------------------------------
-// Suite 7: Compiled Production Bundle Asset & Interactive Integrity
+// Suite 7: Telegram Support Floating Chat Bubble & v1.0.1 Release Conformance
 // -----------------------------------------------------------------------------
-console.log('\n\x1b[1m=== Suite 7: Compiled Production Bundle Forensic Audit ===\x1b[0m');
+console.log('\n\x1b[1m=== Suite 7: Telegram Support Chat Bubble & v1.0.1 Release ===\x1b[0m');
+
+const appSource = readFile('src/App.tsx');
+assert(
+  appSource.includes('TelegramSupportWidget') && appSource.includes('<TelegramSupportWidget />'),
+  'App.tsx mounts TelegramSupportWidget floating chat bubble'
+);
+
+const telegramWidgetSource = readFile('src/components/support/TelegramSupportWidget.tsx');
+assert(
+  telegramWidgetSource.includes('/telegram-qr.png') &&
+  telegramWidgetSource.includes('@HOHINEEE') &&
+  telegramWidgetSource.includes('https://t.me/HOHINEEE'),
+  'TelegramSupportWidget binds official @HOHINEEE QR image and direct t.me link'
+);
+
+assert(
+  telegramWidgetSource.includes('Escape') && telegramWidgetSource.includes('mousedown'),
+  'TelegramSupportWidget supports Escape key dismissal and click-outside dismissal'
+);
+
+assert(
+  fs.existsSync(path.resolve(ROOT_DIR, 'public/telegram-qr.png')),
+  'public/telegram-qr.png exists on filesystem for Telegram support QR presentation'
+);
+
+const siteCfg = readFile('src/config/site.ts');
+assert(
+  siteCfg.includes('v1.0.1/HITechDev.AIStudio.F0-stable-Setup.exe'),
+  'siteConfig binds official v1.0.1 stable release binary'
+);
+
+// -----------------------------------------------------------------------------
+// Suite 8: Compiled Production Bundle Asset & Interactive Integrity
+// -----------------------------------------------------------------------------
+console.log('\n\x1b[1m=== Suite 8: Compiled Production Bundle Forensic Audit ===\x1b[0m');
 
 const distHtml = readFile('dist/index.html');
 assert(distHtml.includes('<div id="root"></div>'), 'dist/index.html mounts <div id="root">');

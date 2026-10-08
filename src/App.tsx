@@ -7,6 +7,7 @@ import { BentoGrid } from '@/components/bento/BentoGrid';
 import { ZaloVipSection } from '@/components/vip/ZaloVipSection';
 import { VipModal } from '@/components/vip/VipModal';
 import { GlowingCursor } from '@/components/ui/GlowingCursor';
+import { TelegramSupportWidget } from '@/components/support/TelegramSupportWidget';
 
 export const App: React.FC = () => {
   const [vipModalOpen, setVipModalOpen] = useState(false);
@@ -24,6 +25,7 @@ export const App: React.FC = () => {
         <Footer />
       </ShellContainer>
       <VipModal isOpen={vipModalOpen} onClose={() => setVipModalOpen(false)} />
+      <TelegramSupportWidget />
     </>
   );
 };

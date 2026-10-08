@@ -21,6 +21,12 @@ const ZaloIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) =
   </svg>
 );
 
+const TelegramIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.94-1.28 4.91-2.12 5.9-2.54 2.81-1.17 3.4-.37 3.42 1.44z" />
+  </svg>
+);
+
 export const Footer: React.FC = () => {
   return (
     <footer className="relative mt-12 sm:mt-20 pt-16 pb-12 px-4 sm:px-6 md:px-12 border-t border-white/10 overflow-hidden bg-obsidian-deep/80">
@@ -92,6 +98,17 @@ export const Footer: React.FC = () => {
                 title={siteConfig.socials.zaloCommunity ? 'Zalo Community' : 'Nhóm Zalo (Sắp mở liên kết)'}
               >
                 <ZaloIcon className="w-4 h-4" />
+              </a>
+
+              <a
+                href={siteConfig.socials.telegram || 'https://t.me/HOHINEEE'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-xl bg-white/[0.05] hover:bg-sky-400 hover:text-black text-zinc-300 border border-white/10 flex items-center justify-center transition-all"
+                aria-label="Telegram Support"
+                title="Hỗ trợ Telegram (@HOHINEEE)"
+              >
+                <TelegramIcon className="w-4 h-4" />
               </a>
             </div>
           </div>

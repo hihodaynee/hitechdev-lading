@@ -54,6 +54,7 @@ export interface SiteConfig {
     tiktok: string;
     facebook: string;
     zaloCommunity: string;
+    telegram?: string;
   };
   vipCouponCode: string;
   aiStudioDownloadUrl: string;
@@ -82,10 +83,11 @@ export const siteConfig: SiteConfig = {
     tiktok: 'https://www.tiktok.com/@hi.tech.mmo',
     facebook: 'https://www.facebook.com/profile.php?id=61594632656414',
     zaloCommunity: '',
+    telegram: 'https://t.me/HOHINEEE',
   },
   vipCouponCode: 'HITECHVIP2026',
   aiStudioDownloadUrl:
-    'https://github.com/hihodaynee/ai-studio-releases/releases/download/v1.0.0/HITechDev.AIStudio.F0-stable-Setup.exe',
+    'https://github.com/hihodaynee/ai-studio-releases/releases/download/v1.0.1/HITechDev.AIStudio.F0-stable-Setup.exe',
   downloadLabel: 'Tải AI Studio',
   vipPerks: [
     {
@@ -398,7 +400,7 @@ export const siteConfig: SiteConfig = {
       problemSolved:
         'Tiết kiệm 90% thời gian sáng tạo: Không bí ý tưởng, không văn mẫu AI, không lệch nhân vật và 0đ phí API tạo video/ảnh.',
       downloadUrl:
-        'https://github.com/hihodaynee/ai-studio-releases/releases/download/v1.0.0/HITechDev.AIStudio.F0-stable-Setup.exe',
+        'https://github.com/hihodaynee/ai-studio-releases/releases/download/v1.0.1/HITechDev.AIStudio.F0-stable-Setup.exe',
       downloadLabel: 'Tải AI Studio',
       badges: [
         'Seedance Video MIỄN PHÍ',
