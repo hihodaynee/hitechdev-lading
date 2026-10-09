@@ -88,6 +88,18 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-1 lg:gap-1.5 shrink-0">
           {navLinks.map((link) => {
+            if (link.isVip) {
+              return (
+                <button
+                  key={link.href}
+                  onClick={onOpenVipModal}
+                  className="relative px-3.5 py-1.5 text-xs lg:text-sm font-medium rounded-full text-zinc-300 hover:text-white hover:bg-white/[0.06] transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer"
+                >
+                  <span>{link.label}</span>
+                </button>
+              );
+            }
+
             const isActive = link.view && currentView === link.view;
 
             return (
@@ -123,33 +135,13 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Right Action & System Status */}
         <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
           {/* Pulsating System Operational Tag */}
-          <div className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-900/90 border border-white/10 text-[10px] font-mono text-zinc-300 shrink-0">
+          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-zinc-900/90 border border-white/10 text-[10px] font-mono text-zinc-300 shrink-0">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-lime-400" />
             </span>
             <span className="text-zinc-200">SYSTEM OPERATIONAL</span>
           </div>
-
-          {/* Direct Download Button */}
-          <a
-            href={siteConfig.aiStudioDownloadUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white/10 text-white hover:bg-white/20 border border-white/15 transition-all whitespace-nowrap shrink-0"
-          >
-            <Download className="w-3.5 h-3.5 text-lime-400" />
-            <span>Tải Setup.exe</span>
-          </a>
-
-          {/* Join VIP / Zalo Button */}
-          <button
-            onClick={onOpenVipModal}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-lime-400 text-black hover:bg-lime-300 hover:shadow-lime-glow transition-all active:scale-95 whitespace-nowrap shrink-0 cursor-pointer"
-          >
-            <Users className="w-3.5 h-3.5" />
-            <span>Nhóm Zalo</span>
-          </button>
 
           {/* Mobile Hamburger Button */}
           <button
