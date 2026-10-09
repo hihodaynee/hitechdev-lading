@@ -12,6 +12,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenVipModal }) => {
   const navLinks = [
     { label: 'AI Studio', href: '#ai-studio', badge: 'LIVE' },
     { label: 'Auto Video', href: '#auto-video', badge: 'SOON' },
+    { label: 'Tài Nguyên Số', href: '#digital-store', badge: 'HOT' },
     { label: 'Cộng Đồng Zalo', href: '#vip' },
   ];
 
@@ -56,6 +57,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenVipModal }) => {
                   className={`text-[9px] font-mono px-1.5 py-0.2 rounded-full uppercase shrink-0 ${
                     link.badge === 'LIVE'
                       ? 'bg-lime-400/20 text-lime-400 border border-lime-400/30'
+                      : link.badge === 'HOT'
+                      ? 'bg-amber-400/20 text-amber-300 border border-amber-400/30'
                       : 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/30'
                   }`}
                 >
@@ -133,6 +136,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenVipModal }) => {
                     className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${
                       link.badge === 'LIVE'
                         ? 'bg-lime-400/20 text-lime-400'
+                        : link.badge === 'HOT'
+                        ? 'bg-amber-400/20 text-amber-300'
                         : 'bg-cyan-500/20 text-cyan-300'
                     }`}
                   >

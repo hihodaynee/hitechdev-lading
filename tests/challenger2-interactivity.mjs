@@ -185,11 +185,13 @@ console.log('\n\x1b[1m=== Suite 3: Navigation Anchors & Target Element Conforman
 
 const methodologyCode = readFile('src/components/methodology/MethodologySection.tsx');
 const footerCode = readFile('src/components/layout/Footer.tsx');
+const digitalStoreCode = readFile('src/components/store/DigitalStoreSection.tsx');
 
 // Check that primary anchor targets are present in DOM
 const anchorTargets = [
   { id: 'ai-studio', file: 'AiStudioCard.tsx', code: aiStudioCode },
   { id: 'auto-video', file: 'AutoVideoCard.tsx', code: autoVideoCode },
+  { id: 'digital-store', file: 'DigitalStoreSection.tsx', code: digitalStoreCode },
   { id: 'vip', file: 'ZaloVipSection.tsx', code: zaloVipCode },
 ];
 
@@ -204,6 +206,7 @@ for (const target of anchorTargets) {
 assert(
   headerCode.includes("href: '#ai-studio'") &&
   headerCode.includes("href: '#auto-video'") &&
+  headerCode.includes("href: '#digital-store'") &&
   headerCode.includes("href: '#vip'"),
   'Header navigation array contains links to primary sections'
 );
@@ -212,6 +215,7 @@ assert(
 assert(
   footerCode.includes('href="#ai-studio"') &&
   footerCode.includes('href="#auto-video"') &&
+  footerCode.includes('href="#digital-store"') &&
   footerCode.includes('href="#vip"'),
   'Footer navigation menu contains anchor links to primary sections'
 );
@@ -465,8 +469,9 @@ assert(
   bundledJsContent.includes('ai-studio') &&
   bundledJsContent.includes('auto-video') &&
   bundledJsContent.includes('methodology') &&
-  bundledJsContent.includes('vip'),
-  'Bundled JS retains all 4 anchor target identifiers'
+  bundledJsContent.includes('vip') &&
+  bundledJsContent.includes('digital-store'),
+  'Bundled JS retains all 5 anchor target identifiers'
 );
 assert(
   bundledJsContent.includes('SYSTEM OPERATIONAL'),
@@ -485,6 +490,52 @@ const distLogo = fs.readFileSync(path.resolve(ROOT_DIR, 'dist/logo.png'));
 assert(
   publicLogo.equals(distLogo),
   'Production dist/logo.png is identical bit-for-bit to public/logo.png'
+);
+
+// -----------------------------------------------------------------------------
+// Suite 9: Digital Store (CapCut, Spotify, Gmail, Grok) & Order Flow
+// -----------------------------------------------------------------------------
+console.log('\n\x1b[1m=== Suite 9: Digital Store & Order Flow Forensic Audit ===\x1b[0m');
+
+const orderModalCode = readFile('src/components/store/OrderModal.tsx');
+assert(
+  appCode.includes('DigitalStoreSection') &&
+  appCode.includes('OrderModal') &&
+  appCode.includes('orderProduct') &&
+  appCode.includes('setOrderProduct'),
+  'App.tsx integrates DigitalStoreSection and manages OrderModal state'
+);
+
+assert(
+  siteConfigCode.includes('capcut-pro') &&
+  siteConfigCode.includes('spotify-premium') &&
+  siteConfigCode.includes('gmail-aged') &&
+  siteConfigCode.includes('grok-super'),
+  'siteConfig defines all 4 digital products'
+);
+
+assert(
+  siteConfigCode.includes('99.000đ') &&
+  siteConfigCode.includes('289.000đ') &&
+  siteConfigCode.includes('129.000đ') &&
+  siteConfigCode.includes('49.000đ'),
+  'siteConfig defines accurate pricing for all products and plans'
+);
+
+assert(
+  fs.existsSync(path.resolve(ROOT_DIR, 'public/products/capcut-banner.jpg')) &&
+  fs.existsSync(path.resolve(ROOT_DIR, 'public/products/capcut-details.png')) &&
+  fs.existsSync(path.resolve(ROOT_DIR, 'public/products/spotify-banner.jpg')) &&
+  fs.existsSync(path.resolve(ROOT_DIR, 'public/products/gmail-banner.jpg')) &&
+  fs.existsSync(path.resolve(ROOT_DIR, 'public/products/grok-super.png')),
+  'All 5 product image assets exist in public/products/'
+);
+
+assert(
+  orderModalCode.includes('[ĐẶT HÀNG]') &&
+  orderModalCode.includes('t.me/HOHINEEE') &&
+  orderModalCode.includes('zalo-qr.png'),
+  'OrderModal generates automated order syntax and connects to Telegram and Zalo'
 );
 
 // -----------------------------------------------------------------------------

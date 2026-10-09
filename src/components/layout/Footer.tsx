@@ -132,6 +132,12 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
+                <a href="#digital-store" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                  <span>Tài Nguyên Số</span>
+                  <span className="text-[9px] font-mono text-amber-400 bg-amber-400/10 px-1.5 py-0.2 rounded">HOT</span>
+                </a>
+              </li>
+              <li>
                 <a href="#vip" className="hover:text-white transition-colors">
                   Đặc Quyền Cộng Đồng VIP
                 </a>

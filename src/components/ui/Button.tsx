@@ -3,7 +3,7 @@ import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'lime' | 'neon-pulse' | 'outline' | 'ghost' | 'zinc';
+  variant?: 'lime' | 'neon-pulse' | 'outline' | 'ghost' | 'zinc' | 'cyan';
   size?: 'sm' | 'md' | 'lg';
   icon?: React.ReactNode;
 }
@@ -25,6 +25,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       ghost:
         'bg-transparent text-zinc-300 hover:text-white hover:bg-white/[0.06] transition-colors',
       zinc: 'bg-zinc-800 text-zinc-100 hover:bg-zinc-700 border border-zinc-700 transition-colors',
+      cyan: 'bg-cyan-400 text-black font-semibold hover:bg-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] active:scale-[0.98] transition-all duration-200 border border-cyan-300',
     };
 
     return (
