@@ -21,39 +21,67 @@ export const App: React.FC = () => {
   const [orderProduct, setOrderProduct] = useState<DigitalProduct | null>(null);
   const [orderPlanId, setOrderPlanId] = useState<string | undefined>(undefined);
 
-  // Sync hash routing on mount and hash changes
+  // Sync routing on mount, popstate, and hash changes
   useEffect(() => {
-    const handleHashChange = () => {
+    const syncRouteFromLocation = () => {
+      // 1. If legacy hash exists, migrate it cleanly to standard path
       const hash = window.location.hash.toLowerCase();
+      const pathname = window.location.pathname.toLowerCase();
+
       if (
         hash.includes('tools') ||
         hash.includes('ai-studio') ||
         hash.includes('auto-video')
       ) {
+        window.history.replaceState(null, '', '/tools');
         setCurrentView('tools');
+        return;
       } else if (
         hash.includes('store') ||
         hash.includes('digital-store') ||
         hash.includes('tai-nguyen')
       ) {
+        window.history.replaceState(null, '', '/store');
         setCurrentView('store');
+        return;
       } else if (hash.includes('vip')) {
         setVipModalOpen(true);
+        if (pathname.startsWith('/tools')) {
+          setCurrentView('tools');
+        } else if (pathname.startsWith('/store')) {
+          setCurrentView('store');
+        } else {
+          setCurrentView('home');
+        }
+        return;
+      }
+
+      // 2. Standard clean path routing
+      if (pathname.startsWith('/tools')) {
+        setCurrentView('tools');
+      } else if (pathname.startsWith('/store')) {
+        setCurrentView('store');
       } else {
         setCurrentView('home');
       }
     };
 
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    syncRouteFromLocation();
+    window.addEventListener('popstate', syncRouteFromLocation);
+    window.addEventListener('hashchange', syncRouteFromLocation);
+    return () => {
+      window.removeEventListener('popstate', syncRouteFromLocation);
+      window.removeEventListener('hashchange', syncRouteFromLocation);
+    };
   }, []);
 
-  const navigateTo = (view: SubPageView) => {
+  const navigateTo = (view: SubPageView, path?: string) => {
     setCurrentView(view);
-    const targetHash =
-      view === 'home' ? '#/' : view === 'tools' ? '#/tools' : '#/store';
-    window.location.hash = targetHash;
+    const targetPath =
+      path || (view === 'home' ? '/' : view === 'tools' ? '/tools' : '/store');
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState(null, '', targetPath);
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

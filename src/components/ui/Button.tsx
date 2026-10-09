@@ -3,7 +3,7 @@ import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'lime' | 'neon-pulse' | 'outline' | 'ghost' | 'zinc' | 'cyan';
+  variant?: 'lime' | 'neon-pulse' | 'outline' | 'ghost' | 'zinc' | 'ocean' | 'cyan';
   size?: 'sm' | 'md' | 'lg';
   icon?: React.ReactNode;
 }
@@ -17,15 +17,18 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     const variantStyles = {
-      lime: 'bg-lime-400 text-black font-semibold hover:bg-lime-300 hover:shadow-lime-glow active:scale-[0.98] transition-all duration-200 border border-lime-300',
+      lime: 'bg-lime-400 text-black font-bold hover:bg-lime-300 hover:shadow-lime-glow active:scale-[0.98] transition-all duration-200 border border-lime-300',
       'neon-pulse':
         'relative bg-lime-400 text-black font-bold shadow-lime-glow hover:shadow-lime-glow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 border border-lime-300 neon-pulse-glow',
       outline:
-        'bg-white/[0.04] text-zinc-200 border border-white/20 hover:border-lime-400/60 hover:text-lime-400 hover:bg-lime-400/[0.05] transition-all duration-200 backdrop-blur-md',
+        'bg-white/[0.04] text-zinc-200 border border-white/20 hover:border-lime-400/60 hover:text-lime-400 hover:bg-lime-400/[0.05] active:scale-[0.98] transition-all duration-200 backdrop-blur-md',
       ghost:
         'bg-transparent text-zinc-300 hover:text-white hover:bg-white/[0.06] transition-colors',
       zinc: 'bg-zinc-800 text-zinc-100 hover:bg-zinc-700 border border-zinc-700 transition-colors',
-      cyan: 'bg-cyan-400 text-black font-semibold hover:bg-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] active:scale-[0.98] transition-all duration-200 border border-cyan-300',
+      ocean:
+        'bg-sky-500/10 text-sky-300 border border-sky-400/30 hover:bg-sky-500/20 hover:border-sky-400 hover:text-white transition-all',
+      // Unified alias: any legacy cyan requests match the primary neon lime
+      cyan: 'bg-lime-400 text-black font-bold hover:bg-lime-300 hover:shadow-lime-glow active:scale-[0.98] transition-all duration-200 border border-lime-300',
     };
 
     return (

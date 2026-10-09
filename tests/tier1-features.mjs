@@ -93,7 +93,9 @@ export async function runTier1Tests() {
   assertContains(headerContent, 'rounded-full', 'F5.3: Header applies pill shape rounded-full styling');
   assertContains(headerContent, 'SYSTEM OPERATIONAL', 'F5.4: Header displays SYSTEM OPERATIONAL status text');
   assert(
-    headerContent.includes('#ai-studio') || headerContent.includes('#/tools'),
+    headerContent.includes('#ai-studio') ||
+      headerContent.includes('#/tools') ||
+      headerContent.includes('/tools'),
     'F5.6: Header contains anchor link to AI Studio / Tools section'
   );
 

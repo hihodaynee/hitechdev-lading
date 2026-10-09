@@ -6,7 +6,6 @@ import {
   ZoomIn,
   ShieldCheck,
   Zap,
-  Filter,
 } from 'lucide-react';
 import { siteConfig, DigitalProduct } from '@/config/site';
 import { Badge } from '@/components/ui/Badge';
@@ -27,7 +26,6 @@ export const DigitalStoreSection: React.FC<DigitalStoreSectionProps> = ({
     image: string;
     title: string;
     description: string;
-    accentColor?: 'lime' | 'cyan';
   } | null>(null);
 
   const products = siteConfig.digitalProducts;
@@ -70,14 +68,14 @@ export const DigitalStoreSection: React.FC<DigitalStoreSectionProps> = ({
             <Badge variant="lime" dot>
               DIGITAL ASSETS // TÀI NGUYÊN SỐ
             </Badge>
-            <span className="text-xs font-mono text-zinc-400 hidden sm:inline-block">
+            <span className="text-xs font-mono text-sky-400 bg-sky-500/10 border border-sky-400/20 px-2.5 py-0.5 rounded-full font-bold hidden sm:inline-block">
               // TÀI KHOẢN CHÍNH HÃNG 100%
             </span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
             Kho Tài Khoản & Bản Quyền Số{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 via-cyan-400 to-sky-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 via-lime-300 to-sky-400">
               Phục Vụ Creator & MMO
             </span>
           </h2>
@@ -113,38 +111,13 @@ export const DigitalStoreSection: React.FC<DigitalStoreSectionProps> = ({
           ))}
         </div>
 
-        {/* 100% Balanced & Equal-Height Product Cards Grid */}
+        {/* 100% Symmetrical, Equal-Height Product Cards Grid with Unified Neon Lime Theme */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 items-stretch">
           {filteredProducts.map((product) => {
-            const isCyan = product.accentColor === 'cyan';
-            const isBlue = product.accentColor === 'blue';
-            const isPurple = product.accentColor === 'purple';
-            const isGreen = product.accentColor === 'green';
-
-            const borderClass = isCyan
-              ? 'border-cyan-400/30 hover:border-cyan-400/70 group-hover:shadow-[0_0_25px_rgba(34,211,238,0.15)]'
-              : isBlue
-              ? 'border-blue-500/30 hover:border-blue-400/70 group-hover:shadow-[0_0_25px_rgba(59,130,246,0.15)]'
-              : isPurple
-              ? 'border-purple-500/30 hover:border-purple-400/70 group-hover:shadow-[0_0_25px_rgba(168,85,247,0.15)]'
-              : isGreen
-              ? 'border-emerald-400/30 hover:border-emerald-400/70 group-hover:shadow-[0_0_25px_rgba(52,211,153,0.15)]'
-              : 'border-lime-400/30 hover:border-lime-400/70 group-hover:shadow-lime-glow';
-
-            const priceColorClass = isCyan
-              ? 'text-cyan-400'
-              : isBlue
-              ? 'text-blue-400'
-              : isPurple
-              ? 'text-purple-400'
-              : isGreen
-              ? 'text-emerald-400'
-              : 'text-lime-400';
-
             return (
               <div
                 key={product.id}
-                className={`rounded-[2rem] bg-zinc-950/90 border ${borderClass} p-5 sm:p-6 flex flex-col justify-between shadow-2xl relative overflow-hidden transition-all duration-300 h-full group`}
+                className="rounded-[2rem] bg-zinc-950/90 border border-white/10 hover:border-lime-400/60 hover:shadow-lime-glow p-5 sm:p-6 flex flex-col justify-between shadow-2xl relative overflow-hidden transition-all duration-300 h-full group"
               >
                 {/* Top Section */}
                 <div className="space-y-4 flex-1 flex flex-col">
@@ -165,7 +138,6 @@ export const DigitalStoreSection: React.FC<DigitalStoreSectionProps> = ({
                             image: product.image,
                             title: product.title,
                             description: product.subtitle,
-                            accentColor: isCyan ? 'cyan' : 'lime',
                           })
                         }
                         className="p-1.5 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-white hover:bg-black text-zinc-300 hover:text-lime-400 transition-all cursor-pointer shadow-lg"
@@ -177,10 +149,10 @@ export const DigitalStoreSection: React.FC<DigitalStoreSectionProps> = ({
 
                     {/* Bottom Badges on Image */}
                     <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[10px] font-mono">
-                      <span className="bg-black/85 text-white font-bold px-2 py-0.5 rounded-full border border-white/20">
+                      <span className="bg-lime-400 text-black font-bold px-2 py-0.5 rounded-full shadow-sm">
                         {product.badge}
                       </span>
-                      <span className="bg-black/85 text-zinc-300 px-2 py-0.5 rounded-full border border-white/10 truncate max-w-[140px]">
+                      <span className="bg-black/85 text-sky-300 px-2 py-0.5 rounded-full border border-sky-400/25 truncate max-w-[140px]">
                         {product.format}
                       </span>
                     </div>
@@ -192,8 +164,8 @@ export const DigitalStoreSection: React.FC<DigitalStoreSectionProps> = ({
                       <span className="text-[10px] font-mono tracking-wider uppercase text-zinc-400">
                         // {product.categoryLabel}
                       </span>
-                      <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="text-[10px] font-mono text-sky-400 flex items-center gap-1 font-semibold">
+                        <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
                         Sẵn sàng
                       </span>
                     </div>
@@ -219,13 +191,13 @@ export const DigitalStoreSection: React.FC<DigitalStoreSectionProps> = ({
                     ))}
                   </div>
 
-                  {/* Price & Duration Row (Symmetrical) */}
+                  {/* Price & Duration Row: Unified Neon Lime Price */}
                   <div className="p-3.5 rounded-2xl bg-black/60 border border-white/10 flex items-center justify-between mt-auto">
                     <div>
                       <span className="text-[10px] font-mono text-zinc-400 block uppercase">
                         Giá trọn gói:
                       </span>
-                      <span className={`text-xl font-bold font-mono ${priceColorClass}`}>
+                      <span className="text-xl font-bold font-mono text-lime-400">
                         {product.priceDisplay}
                       </span>
                     </div>
@@ -241,7 +213,7 @@ export const DigitalStoreSection: React.FC<DigitalStoreSectionProps> = ({
                   </div>
                 </div>
 
-                {/* Symmetrical Action Buttons: Xem Chi Tiết & Đặt Mua */}
+                {/* Symmetrical Action Buttons: Unified Outline (Xem Chi Tiết) & Unified Lime (Đặt Mua) */}
                 <div className="pt-4 mt-4 border-t border-white/10 grid grid-cols-2 gap-2 shrink-0">
                   <Button
                     variant="outline"
@@ -254,7 +226,7 @@ export const DigitalStoreSection: React.FC<DigitalStoreSectionProps> = ({
                   </Button>
 
                   <Button
-                    variant={isCyan ? 'cyan' : 'lime'}
+                    variant="lime"
                     size="sm"
                     onClick={() => onOrderProduct(product)}
                     className="font-bold cursor-pointer text-xs"
@@ -277,7 +249,7 @@ export const DigitalStoreSection: React.FC<DigitalStoreSectionProps> = ({
           image={activeLightbox.image}
           title={activeLightbox.title}
           description={activeLightbox.description}
-          accentColor={activeLightbox.accentColor || 'lime'}
+          accentColor="lime"
         />
       )}
     </section>

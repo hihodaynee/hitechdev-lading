@@ -8,7 +8,6 @@ import {
   ShieldCheck,
   Zap,
   CheckCircle2,
-  Video,
 } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { HeroSection } from '@/components/hero/HeroSection';
@@ -49,7 +48,7 @@ export const HomeOverview: React.FC<HomeOverviewProps> = ({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {/* PORTAL 1: CÔNG CỤ MMO */}
-            <div className="rounded-[2.5rem] bg-gradient-to-br from-zinc-950 via-zinc-900 to-black border border-lime-400/30 hover:border-lime-400/80 p-6 sm:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden group transition-all duration-300">
+            <div className="rounded-[2.5rem] bg-gradient-to-br from-zinc-950 via-zinc-900 to-black border border-white/10 hover:border-lime-400/60 hover:shadow-lime-glow p-6 sm:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden group transition-all duration-300">
               <div className="absolute -top-24 -right-24 w-60 h-60 bg-lime-400/10 rounded-full blur-3xl pointer-events-none group-hover:bg-lime-400/20 transition-all" />
 
               <div className="space-y-5 relative z-10">
@@ -57,9 +56,14 @@ export const HomeOverview: React.FC<HomeOverviewProps> = ({
                   <div className="p-3 rounded-2xl bg-lime-400/10 border border-lime-400/30 text-lime-400">
                     <Wrench className="w-6 h-6" />
                   </div>
-                  <Badge variant="lime" dot>
-                    2 PHẦN MỀM TỰ ĐỘNG
-                  </Badge>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-mono text-sky-400 bg-sky-500/10 border border-sky-400/20 px-2.5 py-0.5 rounded-full font-bold">
+                      AUTOMATION
+                    </span>
+                    <Badge variant="lime" dot>
+                      2 PHẦN MỀM TỰ ĐỘNG
+                    </Badge>
+                  </div>
                 </div>
 
                 <div className="space-y-2">
@@ -103,23 +107,28 @@ export const HomeOverview: React.FC<HomeOverviewProps> = ({
             </div>
 
             {/* PORTAL 2: TÀI NGUYÊN SỐ */}
-            <div className="rounded-[2.5rem] bg-gradient-to-br from-zinc-950 via-zinc-900 to-black border border-cyan-400/30 hover:border-cyan-400/80 p-6 sm:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden group transition-all duration-300">
-              <div className="absolute -top-24 -right-24 w-60 h-60 bg-cyan-400/10 rounded-full blur-3xl pointer-events-none group-hover:bg-cyan-400/20 transition-all" />
+            <div className="rounded-[2.5rem] bg-gradient-to-br from-zinc-950 via-zinc-900 to-black border border-white/10 hover:border-lime-400/60 hover:shadow-lime-glow p-6 sm:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden group transition-all duration-300">
+              <div className="absolute -top-24 -right-24 w-60 h-60 bg-lime-400/10 rounded-full blur-3xl pointer-events-none group-hover:bg-lime-400/20 transition-all" />
 
               <div className="space-y-5 relative z-10">
                 <div className="flex items-center justify-between">
-                  <div className="p-3 rounded-2xl bg-cyan-400/10 border border-cyan-400/30 text-cyan-400">
+                  <div className="p-3 rounded-2xl bg-lime-400/10 border border-lime-400/30 text-lime-400">
                     <ShoppingBag className="w-6 h-6" />
                   </div>
-                  <Badge variant="cyan" dot>
-                    6 TÀI NGUYÊN BẢN QUYỀN
-                  </Badge>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-mono text-sky-400 bg-sky-500/10 border border-sky-400/20 px-2.5 py-0.5 rounded-full font-bold">
+                      VERIFIED
+                    </span>
+                    <Badge variant="lime" dot>
+                      6 TÀI NGUYÊN BẢN QUYỀN
+                    </Badge>
+                  </div>
                 </div>
 
                 <div className="space-y-2">
                   <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight flex items-center gap-2">
                     <span>Tài Nguyên Số</span>
-                    <span className="text-cyan-400 font-mono text-sm">(STORE)</span>
+                    <span className="text-lime-400 font-mono text-sm">(STORE)</span>
                   </h3>
                   <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
                     Kho tài khoản chính hãng giá siêu tiết kiệm: <strong>Google AI Pro 1 Năm (149k)</strong>, <strong>Slot Canva Pro BHF (59k)</strong>, <strong>CapCut Pro (99k-289k)</strong>, Grok Super AI, Spotify và Gmail cổ.
@@ -128,15 +137,15 @@ export const HomeOverview: React.FC<HomeOverviewProps> = ({
 
                 <ul className="space-y-2 text-xs text-zinc-300 font-mono">
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0" />
                     <span>Google AI Pro: Kích hoạt ngay trên Gmail của bạn (149k)</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0" />
                     <span>Canva Pro Add Fam 1 Tháng: Bảo hành fulltime (59k)</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0" />
                     <span>Bàn giao tài khoản nhanh chóng, bảo hành 1 đổi 1</span>
                   </li>
                 </ul>
@@ -145,7 +154,7 @@ export const HomeOverview: React.FC<HomeOverviewProps> = ({
               <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between gap-4 relative z-10">
                 <span className="text-xs font-mono text-zinc-400">Trang chuyên biệt</span>
                 <Button
-                  variant="cyan"
+                  variant="lime"
                   size="md"
                   onClick={onNavigateStore}
                   className="font-bold cursor-pointer"

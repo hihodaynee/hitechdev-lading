@@ -31,7 +31,7 @@ export const ToolsSection: React.FC<ToolsSectionProps> = ({
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
             Bộ Đôi Vũ Khí Tự Động Hóa{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 via-cyan-400 to-sky-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 via-lime-300 to-sky-400">
               Sản Xuất Video Triệu View
             </span>
           </h1>

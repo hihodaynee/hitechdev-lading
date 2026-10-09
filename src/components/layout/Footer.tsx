@@ -28,16 +28,15 @@ const TelegramIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' 
 );
 
 interface FooterProps {
-  onNavigate?: (view: 'home' | 'tools' | 'store') => void;
+  onNavigate?: (view: 'home' | 'tools' | 'store', path?: string) => void;
   onOpenVipModal?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenVipModal }) => {
-  const handleNav = (view: 'home' | 'tools' | 'store', hash: string, e: React.MouseEvent) => {
+  const handleNav = (view: 'home' | 'tools' | 'store', path: string, e: React.MouseEvent) => {
     if (onNavigate) {
       e.preventDefault();
-      onNavigate(view);
-      window.location.hash = hash;
+      onNavigate(view, path);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
@@ -57,8 +56,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenVipModal }) =>
           {/* Brand Info */}
           <div className="md:col-span-5 space-y-4">
             <a
-              href="#/"
-              onClick={(e) => handleNav('home', '#/', e)}
+              href="/"
+              onClick={(e) => handleNav('home', '/', e)}
               className="flex items-center gap-3 cursor-pointer"
             >
               <div className="w-10 h-10 rounded-full overflow-hidden border border-lime-400/40">
@@ -139,8 +138,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenVipModal }) =>
             <ul className="space-y-2 text-xs font-medium text-zinc-400">
               <li>
                 <a
-                  href="#/"
-                  onClick={(e) => handleNav('home', '#/', e)}
+                  href="/"
+                  onClick={(e) => handleNav('home', '/', e)}
                   className="hover:text-lime-400 transition-colors flex items-center gap-1.5 cursor-pointer"
                 >
                   <span>Trang Chủ</span>
@@ -148,22 +147,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenVipModal }) =>
               </li>
               <li>
                 <a
-                  href="#/tools"
-                  onClick={(e) => handleNav('tools', '#/tools', e)}
+                  href="/tools"
+                  onClick={(e) => handleNav('tools', '/tools', e)}
                   className="hover:text-lime-400 transition-colors flex items-center gap-1.5 cursor-pointer"
                 >
                   <span>Công Cụ MMO (AI Studio & Auto Video)</span>
-                  <span className="text-[9px] font-mono text-lime-400 bg-lime-400/10 px-1.5 py-0.2 rounded">LIVE</span>
+                  <span className="text-[9px] font-mono text-lime-400 bg-lime-400/10 px-1.5 py-0.2 rounded font-bold">LIVE</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="#/store"
-                  onClick={(e) => handleNav('store', '#/store', e)}
-                  className="hover:text-amber-400 transition-colors flex items-center gap-1.5 cursor-pointer"
+                  href="/store"
+                  onClick={(e) => handleNav('store', '/store', e)}
+                  className="hover:text-lime-400 transition-colors flex items-center gap-1.5 cursor-pointer"
                 >
                   <span>Kho Tài Nguyên Số (6 Sản Phẩm)</span>
-                  <span className="text-[9px] font-mono text-amber-400 bg-amber-400/10 px-1.5 py-0.2 rounded">HOT</span>
+                  <span className="text-[9px] font-mono text-lime-400 bg-lime-400/10 px-1.5 py-0.2 rounded font-bold">HOT</span>
                 </a>
               </li>
               <li>

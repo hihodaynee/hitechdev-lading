@@ -4,7 +4,7 @@ import { siteConfig } from '@/config/site';
 
 interface HeaderProps {
   currentView?: 'home' | 'tools' | 'store';
-  onNavigate?: (view: 'home' | 'tools' | 'store') => void;
+  onNavigate?: (view: 'home' | 'tools' | 'store', path?: string) => void;
   onOpenVipModal: () => void;
 }
 
@@ -16,20 +16,20 @@ export const Header: React.FC<HeaderProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Trang Chủ', view: 'home' as const, href: '#/' },
+    { label: 'Trang Chủ', view: 'home' as const, path: '/' },
     {
       label: 'Công Cụ MMO',
       view: 'tools' as const,
-      href: '#/tools',
+      path: '/tools',
       badge: '2 TOOLS',
     },
     {
       label: 'Tài Nguyên Số',
       view: 'store' as const,
-      href: '#/store',
+      path: '/store',
       badge: 'HOT',
     },
-    { label: 'Cộng Đồng Zalo', href: '#vip', isVip: true },
+    { label: 'Cộng Đồng Zalo', path: '#vip', isVip: true },
   ];
 
   const handleLinkClick = (link: (typeof navLinks)[0], e: React.MouseEvent) => {
@@ -41,9 +41,7 @@ export const Header: React.FC<HeaderProps> = ({
 
     if (link.view && onNavigate) {
       e.preventDefault();
-      onNavigate(link.view);
-      window.location.hash = link.href;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      onNavigate(link.view, link.path);
     }
   };
 
@@ -52,13 +50,11 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="relative rounded-full bg-black/85 backdrop-blur-2xl border border-white/10 px-3 sm:px-6 py-2 sm:py-2.5 shadow-2xl flex items-center justify-between flex-nowrap gap-2 sm:gap-4 transition-all">
         {/* Brand Logo & Name */}
         <a
-          href="#/"
+          href="/"
           onClick={(e) => {
             if (onNavigate) {
               e.preventDefault();
-              onNavigate('home');
-              window.location.hash = '#/';
-              window.scrollTo({ top: 0, behavior: 'smooth' });
+              onNavigate('home', '/');
             }
           }}
           className="flex items-center gap-2.5 shrink-0 group"
@@ -91,7 +87,7 @@ export const Header: React.FC<HeaderProps> = ({
             if (link.isVip) {
               return (
                 <button
-                  key={link.href}
+                  key={link.path}
                   onClick={onOpenVipModal}
                   className="relative px-3.5 py-1.5 text-xs lg:text-sm font-medium rounded-full text-zinc-300 hover:text-white hover:bg-white/[0.06] transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer"
                 >
@@ -104,8 +100,8 @@ export const Header: React.FC<HeaderProps> = ({
 
             return (
               <a
-                key={link.href}
-                href={link.href}
+                key={link.path}
+                href={link.path}
                 onClick={(e) => handleLinkClick(link, e)}
                 className={`relative px-3.5 py-1.5 text-xs lg:text-sm font-medium rounded-full transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer ${
                   isActive
@@ -171,8 +167,8 @@ export const Header: React.FC<HeaderProps> = ({
 
               return (
                 <a
-                  key={link.href}
-                  href={link.href}
+                  key={link.path}
+                  href={link.path}
                   onClick={(e) => {
                     setMobileMenuOpen(false);
                     handleLinkClick(link, e);
