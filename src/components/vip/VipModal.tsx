@@ -107,19 +107,29 @@ export const VipModal: React.FC<VipModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Direct Zalo Link & QR Code Representation */}
-        <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center gap-4">
-          <div className="w-20 h-20 rounded-2xl bg-lime-400 p-2 flex flex-col items-center justify-center shrink-0 shadow-md">
-            <QrCode className="w-16 h-16 text-black" />
-          </div>
-          <div className="space-y-1">
-            <span className="text-[10px] font-mono text-lime-400 font-bold uppercase tracking-wider block">
-              {siteConfig.socials.zaloCommunity ? 'ZALO VIP // QUÉT MÃ GIAO LƯU' : 'ZALO VIP // SẮP MỞ LIÊN KẾT'}
+        <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col sm:flex-row items-center gap-4">
+          <div className="relative w-28 h-28 rounded-2xl overflow-hidden bg-white p-1 flex items-center justify-center shrink-0 shadow-lg border border-lime-400/40 group">
+            <img
+              src="/zalo-qr.png"
+              alt="Mã QR Danh thiếp Zalo Huy Hồ"
+              className="w-full h-full object-contain rounded-xl group-hover:scale-105 transition-transform"
+            />
+            <span className="sr-only">
+              <QrCode className="w-16 h-16 text-black" />
             </span>
-            <h4 className="text-sm font-bold text-white">Nhóm Zalo: HITech MMO Creator</h4>
-            <p className="text-[11px] text-zinc-400">
-              {siteConfig.socials.zaloCommunity
-                ? 'Trao đổi kinh nghiệm làm YouTube, nhận cập nhật bản build mới và tài nguyên kịch bản.'
-                : 'Liên kết nhóm Zalo đang được chuẩn bị và sẽ sớm mở tham gia trực tiếp tại đây!'}
+          </div>
+          <div className="space-y-1 text-center sm:text-left flex-1">
+            <span className="text-[10px] font-mono text-lime-400 font-bold uppercase tracking-wider block">
+              ZALO VIP // QUÉT MÃ KẾT NỐI
+            </span>
+            <h4 className="text-sm font-bold text-white flex items-center justify-center sm:justify-start gap-1.5">
+              <span>Huy Hồ — Danh Thiếp Zalo</span>
+              <span className="text-[10px] font-mono bg-lime-400/20 text-lime-400 px-1.5 py-0.5 rounded border border-lime-400/30">
+                Admin
+              </span>
+            </h4>
+            <p className="text-[11px] text-zinc-300 leading-relaxed">
+              Quét mã QR bằng ứng dụng Zalo trên điện thoại để kết nối trực tiếp với Huy Hồ, nhận hỗ trợ kỹ thuật cài đặt tool và vào nhóm cộng đồng làm YouTube MMO.
             </p>
           </div>
         </div>

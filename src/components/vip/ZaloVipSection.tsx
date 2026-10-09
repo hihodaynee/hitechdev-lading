@@ -75,6 +75,30 @@ export const ZaloVipSection: React.FC<ZaloVipSectionProps> = ({ onOpenVipModal }
                   <span>Miễn phí 100% — Giao lưu cởi mở</span>
                 </div>
               </div>
+
+              {/* Quick Zalo QR Card Callout */}
+              <div
+                onClick={onOpenVipModal}
+                className="pt-1 flex items-center justify-center lg:justify-start"
+              >
+                <div className="inline-flex items-center gap-3 px-3.5 py-2 rounded-2xl bg-black/60 hover:bg-black/90 border border-lime-400/30 hover:border-lime-400/60 transition-all cursor-pointer group shadow-lg">
+                  <div className="w-10 h-10 rounded-xl bg-white p-0.5 overflow-hidden shrink-0 shadow">
+                    <img
+                      src="/zalo-qr.png"
+                      alt="Zalo QR Huy Hồ"
+                      className="w-full h-full object-contain group-hover:scale-110 transition-transform"
+                    />
+                  </div>
+                  <div className="text-left">
+                    <span className="text-[10px] font-mono text-lime-400 font-bold uppercase tracking-wider block">
+                      DANH THIẾP ZALO: HUY HỒ
+                    </span>
+                    <span className="text-xs text-zinc-200 group-hover:text-white transition-colors">
+                      Click xem mã QR Zalo kết nối trực tiếp
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Right Column: 4 Community Highlights */}

@@ -424,10 +424,15 @@ assert(
   'public/telegram-qr.png exists on filesystem for Telegram support QR presentation'
 );
 
+assert(
+  fs.existsSync(path.resolve(ROOT_DIR, 'public/zalo-qr.png')),
+  'public/zalo-qr.png exists on filesystem for Zalo support QR presentation'
+);
+
 const siteCfg = readFile('src/config/site.ts');
 assert(
-  siteCfg.includes('v1.0.1/HITechDev.AIStudio.F0-stable-Setup.exe'),
-  'siteConfig binds official v1.0.1 stable release binary'
+  siteCfg.includes('v1.1.1/HITechDev.AIStudio.F0-stable-Setup.exe'),
+  'siteConfig binds official v1.1.1 stable release binary'
 );
 
 // -----------------------------------------------------------------------------
