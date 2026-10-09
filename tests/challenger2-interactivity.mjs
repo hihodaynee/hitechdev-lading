@@ -433,8 +433,8 @@ assert(
 
 const siteCfg = readFile('src/config/site.ts');
 assert(
-  siteCfg.includes('v1.1.1/HITechDev.AIStudio.F0-stable-Setup.exe'),
-  'siteConfig binds official v1.1.1 stable release binary'
+  siteCfg.includes('v1.1.2/HITechDev.AIStudio.F0-stable-Setup.exe'),
+  'siteConfig binds official v1.1.2 stable release binary'
 );
 
 // -----------------------------------------------------------------------------
