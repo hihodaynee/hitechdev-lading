@@ -202,20 +202,18 @@ for (const target of anchorTargets) {
   );
 }
 
-// Check Header contains links to active anchors
+// Check Header contains links to active sub-pages
 assert(
-  headerCode.includes("href: '#ai-studio'") &&
-  headerCode.includes("href: '#auto-video'") &&
-  headerCode.includes("href: '#digital-store'") &&
+  headerCode.includes("href: '#/tools'") &&
+  headerCode.includes("href: '#/store'") &&
   headerCode.includes("href: '#vip'"),
-  'Header navigation array contains links to primary sections'
+  'Header navigation array contains links to primary sub-pages'
 );
 
-// Check Footer contains links to active anchors
+// Check Footer contains links to active sub-pages
 assert(
-  footerCode.includes('href="#ai-studio"') &&
-  footerCode.includes('href="#auto-video"') &&
-  footerCode.includes('href="#digital-store"') &&
+  footerCode.includes('href="#/tools"') &&
+  footerCode.includes('href="#/store"') &&
   footerCode.includes('href="#vip"'),
   'Footer navigation menu contains anchor links to primary sections'
 );
@@ -498,37 +496,52 @@ assert(
 console.log('\n\x1b[1m=== Suite 9: Digital Store & Order Flow Forensic Audit ===\x1b[0m');
 
 const orderModalCode = readFile('src/components/store/OrderModal.tsx');
+const detailModalCode = readFile('src/components/store/ProductDetailModal.tsx');
+
 assert(
   appCode.includes('DigitalStoreSection') &&
   appCode.includes('OrderModal') &&
-  appCode.includes('orderProduct') &&
-  appCode.includes('setOrderProduct'),
-  'App.tsx integrates DigitalStoreSection and manages OrderModal state'
+  appCode.includes('ProductDetailModal') &&
+  appCode.includes('setDetailProduct'),
+  'App.tsx integrates DigitalStoreSection, OrderModal, and ProductDetailModal'
 );
 
 assert(
+  siteConfigCode.includes('google-ai-pro') &&
+  siteConfigCode.includes('canva-pro') &&
   siteConfigCode.includes('capcut-pro') &&
   siteConfigCode.includes('spotify-premium') &&
   siteConfigCode.includes('gmail-aged') &&
   siteConfigCode.includes('grok-super'),
-  'siteConfig defines all 4 digital products'
+  'siteConfig defines all 6 digital products including Google AI Pro and Canva Pro'
 );
 
 assert(
+  siteConfigCode.includes('149.000đ') &&
+  siteConfigCode.includes('59.000đ') &&
   siteConfigCode.includes('99.000đ') &&
   siteConfigCode.includes('289.000đ') &&
   siteConfigCode.includes('129.000đ') &&
   siteConfigCode.includes('49.000đ'),
-  'siteConfig defines accurate pricing for all products and plans'
+  'siteConfig defines accurate pricing: Google AI Pro 149k, Canva Pro 59k, CapCut 99k/289k, Spotify 129k, Grok 99k, Gmail 49k'
 );
 
 assert(
+  fs.existsSync(path.resolve(ROOT_DIR, 'public/products/google-ai-pro.png')) &&
+  fs.existsSync(path.resolve(ROOT_DIR, 'public/products/canva-pro.jpg')) &&
   fs.existsSync(path.resolve(ROOT_DIR, 'public/products/capcut-banner.jpg')) &&
   fs.existsSync(path.resolve(ROOT_DIR, 'public/products/capcut-details.png')) &&
   fs.existsSync(path.resolve(ROOT_DIR, 'public/products/spotify-banner.jpg')) &&
   fs.existsSync(path.resolve(ROOT_DIR, 'public/products/gmail-banner.jpg')) &&
   fs.existsSync(path.resolve(ROOT_DIR, 'public/products/grok-super.png')),
-  'All 5 product image assets exist in public/products/'
+  'All 7 product image assets exist in public/products/'
+);
+
+assert(
+  detailModalCode.includes('ProductDetailModal') &&
+  detailModalCode.includes('onOrder') &&
+  detailModalCode.includes('rules'),
+  'ProductDetailModal renders dedicated details view and policy modal'
 );
 
 assert(

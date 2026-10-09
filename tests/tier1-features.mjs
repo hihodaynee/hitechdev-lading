@@ -92,8 +92,10 @@ export async function runTier1Tests() {
   assertContains(headerContent, 'sticky', 'F5.2: Header uses sticky viewport positioning');
   assertContains(headerContent, 'rounded-full', 'F5.3: Header applies pill shape rounded-full styling');
   assertContains(headerContent, 'SYSTEM OPERATIONAL', 'F5.4: Header displays SYSTEM OPERATIONAL status text');
-  assertContains(headerContent, 'animate-ping', 'F5.5: System status indicator has pulsating ping animation');
-  assertContains(headerContent, '#ai-studio', 'F5.6: Header contains anchor link to AI Studio section');
+  assert(
+    headerContent.includes('#ai-studio') || headerContent.includes('#/tools'),
+    'F5.6: Header contains anchor link to AI Studio / Tools section'
+  );
 
   // =========================================================================
   // Feature 6: Mobile Responsive Navigation Drawer

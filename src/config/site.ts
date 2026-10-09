@@ -94,15 +94,21 @@ export interface DigitalProduct {
   id: string;
   title: string;
   subtitle: string;
+  category: 'ai' | 'design' | 'mmo' | 'audio';
+  categoryLabel: string;
   badge: string;
   accentColor: 'lime' | 'cyan' | 'purple' | 'green' | 'blue';
   image: string;
   detailImage?: string;
   format: string;
+  priceDisplay: string;
+  durationDisplay: string;
+  tagHighlights: string[];
   plans: DigitalProductPlan[];
   features: string[];
   warranty: string;
   rules?: string[];
+  descriptionFull?: string[];
 }
 
 export const siteConfig: SiteConfig = {
@@ -640,28 +646,161 @@ export const siteConfig: SiteConfig = {
   ],
   digitalProducts: [
     {
+      id: 'google-ai-pro',
+      title: 'Google One AI Pro 1 Năm',
+      subtitle: 'Kích hoạt ngay trên Gmail chính chủ: Gemini 3.1 Pro, Deep Research & 5 TB Cloud Storage',
+      category: 'ai',
+      categoryLabel: 'AI & Content',
+      badge: '149K / NĂM',
+      accentColor: 'blue',
+      image: '/products/google-ai-pro.png',
+      format: 'Kích hoạt Gmail chính chủ',
+      priceDisplay: '149.000đ',
+      durationDisplay: '1 Năm (Đến 18 Tháng)',
+      tagHighlights: ['Gemini 3.1 Pro', '5 TB Cloud', 'Gmail Chính Chủ'],
+      features: [
+        'Gemini Pro sử dụng lên đến 1 năm',
+        'Link nhận Google One AI Pro có hạn sử dụng đến 18 tháng',
+        'Model Gemini 3.1 Pro nâng cấp: Higher model access, Deep Research báo cáo chuyên sâu',
+        'Tích hợp Gemini thông minh trong Gmail, Docs, Sheets & bộ nhớ khủng 5 TB',
+        'Hỗ trợ viết content, nghiên cứu, học tập, code, lên ý tưởng, làm video AI',
+        'Làm việc với AI nhanh và tiện lợi hơn, xử lý context tài liệu siêu dài',
+        'Chỉ mất vài phút, không cần thao tác phức tạp (kích hoạt thẳng vào Gmail của bạn)',
+        'Phù hợp cho: Học tập • Công việc • Lập trình • Sáng tạo nội dung • Làm video AI',
+      ],
+      warranty: 'Bảo hành & Hỗ trợ Fulltime suốt thời hạn gói',
+      rules: [
+        'Kích hoạt an toàn trực tiếp trên Gmail của bạn, không cần đổi tài khoản',
+        'Số lượng gói ưu đãi có hạn, liên hệ kích hoạt ngay',
+      ],
+      descriptionFull: [
+        'GOOGLE AI PRO 1 NĂM CHỈ 149K – KÍCH HOẠT NGAY TRÊN GMAIL CỦA BẠN',
+        '✅ Gemini Pro sử dụng lên đến 1 năm',
+        '✅ Link nhận Google One AI Pro có hạn sử dụng đến 18 tháng',
+        '✅ Hỗ trợ viết content, nghiên cứu, học tập, code, lên ý tưởng',
+        '✅ Làm việc với AI nhanh và tiện lợi hơn',
+        '⏱️ Chỉ mất vài phút, không cần thao tác phức tạp.',
+        'Phù hợp cho: 🎓 Học tập • 💼 Công việc • 💻 Lập trình • 🎨 Sáng tạo nội dung • 🤖 Làm video AI',
+        '📩 INBOX NGAY để được hỗ trợ kích hoạt',
+        '🔥 Số lượng gói giá ưu đãi có hạn!',
+      ],
+      plans: [
+        {
+          id: 'google-ai-pro-1y',
+          name: 'Google AI Pro 1 Năm',
+          duration: '1 Năm (Link đến 18 Tháng)',
+          price: '149.000đ',
+          priceNumeric: 149000,
+          highlight: true,
+          warranty: 'Bảo hành Fulltime',
+          description: 'Kích hoạt trực tiếp trên Gmail chính chủ',
+          format: 'Gmail chính chủ của bạn',
+          features: [
+            'Gemini 3.1 Pro & Deep Research',
+            '5 TB Cloud Storage Google One',
+            'Tích hợp Gemini Docs, Sheets, Gmail',
+            'Hạn sử dụng lên đến 18 tháng',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'canva-pro',
+      title: 'Slot Canva Pro 1 Tháng (BHF)',
+      subtitle: 'Canva Pro Add Fam 1 Tháng chính chủ, mở khóa toàn bộ Premium Templates & Brand Kit',
+      category: 'design',
+      categoryLabel: 'Đồ Họa & Video',
+      badge: '59K / THÁNG',
+      accentColor: 'cyan',
+      image: '/products/canva-pro.jpg',
+      format: 'Add Family Email Chính Chủ',
+      priceDisplay: '59.000đ',
+      durationDisplay: '1 Tháng (30 Ngày)',
+      tagHighlights: ['Bảo hành Fulltime', 'Không Watermark', 'Add Mail Chính Chủ'],
+      features: [
+        'CANVA PRO ADD FAM 1 THÁNG CHÍNH CHỦ',
+        'BẢO HÀNH FULLTIME (BHF) suốt thời hạn',
+        'Mở khóa kho Premium Templates hàng triệu mẫu thiết kế chuyên nghiệp',
+        'Bộ công cụ Brand Kit quản lý màu sắc, logo và font chữ thương hiệu',
+        'Background Remover: Xóa phông ảnh và video 1 chạm chuẩn nét',
+        'Magic Resize: Tự động đổi tỷ lệ thiết kế cho YouTube, TikTok, Facebook',
+        'Tải file chất lượng cao, không giới hạn, không watermark',
+      ],
+      warranty: 'Bảo hành Fulltime (BHF) 1 đổi 1 suốt 1 tháng',
+      rules: [
+        'Khách gửi email đang dùng Canva để được thêm vào nhóm Family Pro chính chủ',
+        'Thiết kế và dữ liệu của bạn hoàn toàn bảo mật, các thành viên khác không xem được',
+      ],
+      descriptionFull: [
+        'Slot Canva Pro 1 Tháng BHF giá 59k CANVA PRO ADD FAM 1 THÁNG CHÍNH CHỦ',
+        'BẢO HÀNH FULLTIME',
+        '🎨 Mở khóa kho tài nguyên triệu ảnh, video, audio cao cấp',
+        '✨ Xóa phông ảnh 1 chạm (Background Remover)',
+        '📐 Magic Resize kích thước tức thì',
+        '🏷️ Brand kit màu sắc & font chữ riêng',
+        '⚡ Hỗ trợ kích hoạt nhanh trong 5 phút',
+      ],
+      plans: [
+        {
+          id: 'canva-pro-1m',
+          name: 'Canva Pro 1 Tháng (BHF)',
+          duration: '1 Tháng (30 Ngày)',
+          price: '59.000đ',
+          priceNumeric: 59000,
+          highlight: true,
+          warranty: 'Bảo hành Fulltime (BHF)',
+          description: 'Add Family Email Chính Chủ',
+          format: 'Add Fam Gmail Khách',
+          features: [
+            'Mở khóa full Premium Templates',
+            'Background Remover & Magic Resize',
+            'Bảo hành Fulltime 1 đổi 1',
+            'Dùng trên chính email của bạn',
+          ],
+        },
+      ],
+    },
+    {
       id: 'capcut-pro',
       title: 'Tài Khoản CapCut Pro',
       subtitle: 'Mở khóa toàn bộ kho hiệu ứng & templates Pro, xuất 4K 60fps và công cụ AI',
-      badge: 'BÁN CHẠY NHẤT',
+      category: 'design',
+      categoryLabel: 'Đồ Họa & Video',
+      badge: '99K ~ 289K',
       accentColor: 'cyan',
       image: '/products/capcut-banner.jpg',
       detailImage: '/products/capcut-details.png',
       format: 'Email | Password',
+      priceDisplay: '99.000đ - 289.000đ',
+      durationDisplay: '1 Tháng hoặc 3 Tháng',
+      tagHighlights: ['Xuất 4K 60fps', '2 Thiết bị PC & Mobile', 'Hiệu ứng Pro'],
       warranty: 'Bảo hành đầy đủ theo thời hạn gói',
       features: [
-        'Hạn 30 ngày / chu kỳ ổn định',
-        'Đăng nhập tối đa 2 thiết bị (PC / Điện thoại)',
+        'Gói 1 Tháng 99k (Tài khoản cá nhân) hoặc Gói 3 Tháng 289k (Pro Team Pay chính hãng)',
+        'Đăng nhập tối đa 2 thiết bị (PC & Điện thoại)',
         'Định dạng bàn giao: Email | Password',
-        'Mở khóa kho hiệu ứng & templates Pro',
-        'Xuất video 4K / HD 60fps chất lượng cao',
+        'Mở khóa kho hiệu ứng & templates Pro không giới hạn',
+        'Xuất video 4K / HD 60fps sắc nét không watermark',
         'Lưu trữ đám mây Cloud Storage & đồng bộ dự án',
-        'Bộ công cụ AI video thông minh',
+        'Bộ công cụ AI video thông minh, phụ đề tự động',
+      ],
+      rules: [
+        'Không rời khỏi, thay đổi Space để tránh mất Pro (áp dụng gói 3 Tháng Team Pay)',
+        'Không chia sẻ tài khoản cho người khác dùng chung ngoài 2 thiết bị của mình',
+        'Không đổi tên user để shop hỗ trợ bảo hành chính xác',
+      ],
+      descriptionFull: [
+        'TÀI KHOẢN CAPCUT PRO CHÍNH HÃNG DÀNH CHO CREATOR & EDITOR',
+        '1. Gói 1 Tháng: 99.000đ – Tài khoản cá nhân chính hãng, định dạng Email | Password',
+        '2. Gói 3 Tháng (BHF): 289.000đ – Tài khoản Pro Team Pay chính hãng:',
+        '• Chu kỳ 30 ngày gia hạn ổn định đủ 3 tháng',
+        '• Đăng nhập tối đa 2 thiết bị (PC & Mobile)',
+        '• Quy định: Không rời/đổi Space, không share tài khoản, không đổi user name',
       ],
       plans: [
         {
           id: 'capcut-1m',
-          name: 'Gói 1 Tháng',
+          name: 'Gói 1 Tháng (Cá nhân)',
           duration: '30 Ngày',
           price: '99.000đ',
           priceNumeric: 99000,
@@ -670,14 +809,14 @@ export const siteConfig: SiteConfig = {
           format: 'Email | Password',
           features: [
             'Hạn 30 ngày',
-            'Đăng nhập tối đa 2 thiết bị (PC / Điện thoại)',
-            'Định dạng bàn giao: Email | Password',
-            'Tài khoản cá nhân chính hãng, dùng độc lập',
+            'Đăng nhập tối đa 2 thiết bị (PC / Mobile)',
+            'Định dạng: Email | Password',
+            'Tài khoản cá nhân chính hãng độc lập',
           ],
         },
         {
           id: 'capcut-3m',
-          name: 'Gói 3 Tháng (BHF)',
+          name: 'Gói 3 Tháng (BHF Team)',
           duration: '3 Tháng (90 Ngày)',
           price: '289.000đ',
           priceNumeric: 289000,
@@ -687,7 +826,7 @@ export const siteConfig: SiteConfig = {
           format: 'Email | Password',
           features: [
             'Hạn 30 ngày (chu kỳ gia hạn ổn định 3 tháng)',
-            'Đăng nhập tối đa 2 thiết bị (PC / Điện thoại)',
+            'Đăng nhập tối đa 2 thiết bị (PC / Mobile)',
             'Định dạng bàn giao: Email | Password',
             'Tài khoản Pro Team Pay chính hãng',
           ],
@@ -700,13 +839,70 @@ export const siteConfig: SiteConfig = {
       ],
     },
     {
+      id: 'grok-super',
+      title: 'Grok Super AI 5-7 Ngày (BHF)',
+      subtitle: 'Mô hình AI siêu suy luận của xAI Elon Musk: Trả lời siêu tốc, giải mã code & logic',
+      category: 'ai',
+      categoryLabel: 'AI & Content',
+      badge: '99K (BHF)',
+      accentColor: 'purple',
+      image: '/products/grok-super.png',
+      format: 'Email | Pass',
+      priceDisplay: '99.000đ',
+      durationDisplay: '5 - 7 Ngày',
+      tagHighlights: ['xAI Elon Musk', 'Suy luận nâng cao', 'Đổi pass riêng tư'],
+      warranty: 'Bảo hành BHF theo thời hạn gói',
+      features: [
+        'Mô hình Smart AI hàng đầu của xAI Elon Musk',
+        'Phản hồi siêu tốc (Fast responses) không giật lag',
+        'Suy luận sâu sắc (Advanced reasoning), giải bài toán khó',
+        'Quyền truy cập Premium Access đầy đủ tính năng',
+        'Thời hạn sử dụng ổn định: 5 - 7 Ngày',
+      ],
+      rules: [
+        'Tuyệt đối không hủy / cancel gói',
+        'Có thể đổi pass để sử dụng riêng tư',
+        'Không đổi email → Vi phạm Mất bảo hành (Tài khoản có thể bị khóa/thu hồi gói)',
+      ],
+      descriptionFull: [
+        'GROK SUPER AI 5-7 NGÀY - BẢO HÀNH FULLTIME (BHF)',
+        'Định dạng bàn giao: Email | Pass',
+        '⚠️ QUY ĐỊNH BẮT BUỘC:',
+        '• Tuyệt đối không hủy / cancel gói.',
+        '• Có thể đổi pass để sử dụng riêng tư.',
+        '• Không đổi email → Vi phạm Mất bảo hành. Vi phạm có thể khiến tài khoản bị khóa/thu hồi gói.',
+      ],
+      plans: [
+        {
+          id: 'grok-super-plan',
+          name: 'Grok Super 5-7 Ngày',
+          duration: '5 - 7 Ngày',
+          price: '99.000đ',
+          priceNumeric: 99000,
+          warranty: 'Bảo hành BHF theo thời hạn',
+          description: 'Tài khoản cấp sẵn dùng ngay',
+          format: 'Email | Pass',
+          features: [
+            'Thời hạn 5 - 7 ngày',
+            'Đổi pass riêng tư thoải mái',
+            'Không cancel gói, không đổi email',
+          ],
+        },
+      ],
+    },
+    {
       id: 'spotify-premium',
-      title: 'Tài Khoản Spotify Premium 3 Tháng (BH 3D)',
+      title: 'Spotify Premium 3 Tháng (BH 3D)',
       subtitle: 'Account cấp sẵn nghe nhạc Lossless 320kbps không quảng cáo, tải offline',
-      badge: 'PREMIUM AUDIO',
+      category: 'audio',
+      categoryLabel: 'Âm Nhạc',
+      badge: '129K / 3 THÁNG',
       accentColor: 'green',
       image: '/products/spotify-banner.jpg',
       format: 'Account cấp sẵn (Email | Pass)',
+      priceDisplay: '129.000đ',
+      durationDisplay: '3 Tháng (90 Ngày)',
+      tagHighlights: ['Nhạc 320kbps', 'Nghe Offline', 'BH 1 Đổi 1'],
       warranty: '1 đổi 1 trong suốt 3 tháng sử dụng',
       features: [
         'Nghe nhạc không quảng cáo, chất lượng cao 320kbps',
@@ -715,6 +911,17 @@ export const siteConfig: SiteConfig = {
         'Account cấp sẵn, giao ngay sau khi thanh toán',
         'Thời hạn: 3 tháng (90 ngày) dùng ổn định',
         'Bảo hành: 1 đổi 1 trong suốt 3 tháng sử dụng',
+      ],
+      descriptionFull: [
+        '🎵 Spotify Premium 3 Tháng (Account Cấp Sẵn)',
+        '✨ Đặc quyền Premium:',
+        '• Nghe nhạc không quảng cáo, chất lượng cao 320kbps.',
+        '• Tải nhạc nghe Offline, chuyển bài không giới hạn.',
+        '• Hỗ trợ mọi thiết bị: Điện thoại, Máy tính, Smart TV.',
+        '📌 Thông tin & Bảo hành:',
+        '• Định dạng: Account cấp sẵn, giao ngay sau khi thanh toán.',
+        '• Thời hạn: 3 tháng (90 ngày) dùng ổn định.',
+        '• Bảo hành: 1 đổi 1 trong suốt 3 tháng sử dụng.',
       ],
       plans: [
         {
@@ -740,10 +947,15 @@ export const siteConfig: SiteConfig = {
       id: 'gmail-aged',
       title: 'Gmail Cổ Random (2010 ~ 2022)',
       subtitle: 'Gmail năm cũ độ trust cực cao cho làm MMO, kênh YouTube, Ads & Tool',
-      badge: 'MMO ASSET',
+      category: 'mmo',
+      categoryLabel: 'Tài Nguyên MMO',
+      badge: '49K / TÀI KHOẢN',
       accentColor: 'lime',
       image: '/products/gmail-banner.jpg',
-      format: 'Gmail | Pass | Gmail khôi phục | 2FA (nếu có)',
+      format: 'Gmail | Pass | Mail khôi phục | 2FA',
+      priceDisplay: '49.000đ',
+      durationDisplay: 'Sở hữu vĩnh viễn',
+      tagHighlights: ['Năm tạo 2010~2022', 'Trust cao ít die', 'BH Login 24H'],
       warranty: 'Bảo hành Login 24H (Lỗi Pass, Very Phone)',
       features: [
         'Năm tạo random lâu năm từ 2010 đến 2022',
@@ -755,6 +967,11 @@ export const siteConfig: SiteConfig = {
       rules: [
         'Login Lỗi Pass, Very Phone được bảo hành Login trong 24H',
         'Login thành công là hết hạn bảo hành',
+      ],
+      descriptionFull: [
+        'Gmail Cổ Random 2010~2022 giá 49k',
+        'Mô tả: Login Lỗi Pass - Very Phone - Được Bảo hành Login 24H - login thành công là hết Bảo hành',
+        'Định dạng: Gmail | Pass | Gmail khôi phục | 2FA (nếu có)',
       ],
       plans: [
         {
@@ -770,45 +987,6 @@ export const siteConfig: SiteConfig = {
             'Năm tạo 2010 ~ 2022 ngẫu nhiên',
             'Bảo hành lỗi pass, very phone 24H',
             'Login thành công là hết bảo hành',
-          ],
-        },
-      ],
-    },
-    {
-      id: 'grok-super',
-      title: 'Grok Super AI 5-7 Ngày (BHF)',
-      subtitle: 'Mô hình AI siêu suy luận của xAI: Trả lời siêu tốc, giải mã code & logic',
-      badge: 'SMART AI',
-      accentColor: 'purple',
-      image: '/products/grok-super.png',
-      format: 'Email | Pass',
-      warranty: 'Bảo hành BHF theo thời hạn gói',
-      features: [
-        'Mô hình Smart AI hàng đầu của xAI Elon Musk',
-        'Phản hồi siêu tốc (Fast responses) không giật lag',
-        'Suy luận sâu sắc (Advanced reasoning), giải bài toán khó',
-        'Quyền truy cập Premium Access đầy đủ tính năng',
-        'Thời hạn sử dụng ổn định: 5 - 7 Ngày',
-      ],
-      rules: [
-        'Tuyệt đối không hủy / cancel gói',
-        'Có thể đổi pass để sử dụng riêng tư',
-        'Không đổi email → Vi phạm Mất bảo hành (Tài khoản có thể bị khóa/thu hồi gói)',
-      ],
-      plans: [
-        {
-          id: 'grok-super-plan',
-          name: 'Grok Super 5-7 Ngày',
-          duration: '5 - 7 Ngày',
-          price: '99.000đ',
-          priceNumeric: 99000,
-          warranty: 'Bảo hành BHF theo thời hạn',
-          description: 'Tài khoản cấp sẵn dùng ngay',
-          format: 'Email | Pass',
-          features: [
-            'Thời hạn 5 - 7 ngày',
-            'Đổi pass riêng tư thoải mái',
-            'Không cancel gói, không đổi email',
           ],
         },
       ],

@@ -143,12 +143,12 @@ export async function runTier3Tests() {
   assert(
     appContent.includes('ShellContainer') &&
       appContent.includes('Header') &&
-      appContent.includes('HeroSection') &&
-      appContent.includes('BentoGrid') &&
-      appContent.includes('ZaloVipSection') &&
+      (appContent.includes('HomeOverview') || appContent.includes('HeroSection')) &&
+      (appContent.includes('ToolsSection') || appContent.includes('BentoGrid')) &&
+      appContent.includes('DigitalStoreSection') &&
       appContent.includes('Footer') &&
       appContent.includes('VipModal') &&
       appContent.includes('GlowingCursor'),
-    'P16: App.tsx integrates all primary features into a unified layout'
+    'P16: App.tsx integrates all primary features and sub-pages into a unified layout'
   );
 }

@@ -1,26 +1,68 @@
 import React, { useState } from 'react';
-import { Menu, X, Sparkles, ArrowRight, Download, Users } from 'lucide-react';
+import { Menu, X, Download, Users, Wrench, ShoppingBag, Home } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 
 interface HeaderProps {
+  currentView?: 'home' | 'tools' | 'store';
+  onNavigate?: (view: 'home' | 'tools' | 'store') => void;
   onOpenVipModal: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenVipModal }) => {
+export const Header: React.FC<HeaderProps> = ({
+  currentView = 'home',
+  onNavigate,
+  onOpenVipModal,
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'AI Studio', href: '#ai-studio', badge: 'LIVE' },
-    { label: 'Auto Video', href: '#auto-video', badge: 'SOON' },
-    { label: 'Tài Nguyên Số', href: '#digital-store', badge: 'HOT' },
-    { label: 'Cộng Đồng Zalo', href: '#vip' },
+    { label: 'Trang Chủ', view: 'home' as const, href: '#/' },
+    {
+      label: 'Công Cụ MMO',
+      view: 'tools' as const,
+      href: '#/tools',
+      badge: '2 TOOLS',
+    },
+    {
+      label: 'Tài Nguyên Số',
+      view: 'store' as const,
+      href: '#/store',
+      badge: 'HOT',
+    },
+    { label: 'Cộng Đồng Zalo', href: '#vip', isVip: true },
   ];
+
+  const handleLinkClick = (link: (typeof navLinks)[0], e: React.MouseEvent) => {
+    if (link.isVip) {
+      e.preventDefault();
+      onOpenVipModal();
+      return;
+    }
+
+    if (link.view && onNavigate) {
+      e.preventDefault();
+      onNavigate(link.view);
+      window.location.hash = link.href;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   return (
     <header className="sticky top-4 sm:top-6 inset-x-0 mx-auto w-[94%] max-w-5xl lg:max-w-6xl z-50">
       <div className="relative rounded-full bg-black/85 backdrop-blur-2xl border border-white/10 px-3 sm:px-6 py-2 sm:py-2.5 shadow-2xl flex items-center justify-between flex-nowrap gap-2 sm:gap-4 transition-all">
         {/* Brand Logo & Name */}
-        <a href="#" className="flex items-center gap-2.5 shrink-0 group">
+        <a
+          href="#/"
+          onClick={(e) => {
+            if (onNavigate) {
+              e.preventDefault();
+              onNavigate('home');
+              window.location.hash = '#/';
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}
+          className="flex items-center gap-2.5 shrink-0 group"
+        >
           <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden border border-lime-400/30 group-hover:border-lime-400 transition-colors shrink-0">
             <img
               src="/logo.png"
@@ -44,29 +86,38 @@ export const Header: React.FC<HeaderProps> = ({ onOpenVipModal }) => {
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 lg:gap-2 shrink-0">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="relative px-3 py-1.5 text-xs lg:text-sm font-medium text-zinc-300 hover:text-white rounded-full hover:bg-white/[0.06] transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0"
-            >
-              <span>{link.label}</span>
-              {link.badge && (
-                <span
-                  className={`text-[9px] font-mono px-1.5 py-0.2 rounded-full uppercase shrink-0 ${
-                    link.badge === 'LIVE'
-                      ? 'bg-lime-400/20 text-lime-400 border border-lime-400/30'
-                      : link.badge === 'HOT'
-                      ? 'bg-amber-400/20 text-amber-300 border border-amber-400/30'
-                      : 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/30'
-                  }`}
-                >
-                  {link.badge}
-                </span>
-              )}
-            </a>
-          ))}
+        <nav className="hidden md:flex items-center gap-1 lg:gap-1.5 shrink-0">
+          {navLinks.map((link) => {
+            const isActive = link.view && currentView === link.view;
+
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => handleLinkClick(link, e)}
+                className={`relative px-3.5 py-1.5 text-xs lg:text-sm font-medium rounded-full transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer ${
+                  isActive
+                    ? 'bg-lime-400 text-black font-bold shadow-lime-glow'
+                    : 'text-zinc-300 hover:text-white hover:bg-white/[0.06]'
+                }`}
+              >
+                <span>{link.label}</span>
+                {link.badge && (
+                  <span
+                    className={`text-[9px] font-mono px-1.5 py-0.2 rounded-full uppercase shrink-0 font-bold ${
+                      isActive
+                        ? 'bg-black/20 text-black'
+                        : link.badge === 'HOT'
+                        ? 'bg-amber-400/20 text-amber-300 border border-amber-400/30'
+                        : 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/30'
+                    }`}
+                  >
+                    {link.badge}
+                  </span>
+                )}
+              </a>
+            );
+          })}
         </nav>
 
         {/* Right Action & System Status */}
@@ -94,7 +145,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenVipModal }) => {
           {/* Join VIP / Zalo Button */}
           <button
             onClick={onOpenVipModal}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-lime-400 text-black hover:bg-lime-300 hover:shadow-lime-glow transition-all active:scale-95 whitespace-nowrap shrink-0"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-lime-400 text-black hover:bg-lime-300 hover:shadow-lime-glow transition-all active:scale-95 whitespace-nowrap shrink-0 cursor-pointer"
           >
             <Users className="w-3.5 h-3.5" />
             <span>Nhóm Zalo</span>
@@ -123,29 +174,40 @@ export const Header: React.FC<HeaderProps> = ({ onOpenVipModal }) => {
               <span className="text-[10px] font-mono text-lime-400 font-bold">STABLE V1.1.1</span>
             </div>
 
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium text-zinc-200 hover:text-white hover:bg-white/[0.06] transition-colors"
-              >
-                <span>{link.label}</span>
-                {link.badge && (
-                  <span
-                    className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${
-                      link.badge === 'LIVE'
-                        ? 'bg-lime-400/20 text-lime-400'
-                        : link.badge === 'HOT'
-                        ? 'bg-amber-400/20 text-amber-300'
-                        : 'bg-cyan-500/20 text-cyan-300'
-                    }`}
-                  >
-                    {link.badge}
-                  </span>
-                )}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = link.view && currentView === link.view;
+
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => {
+                    setMobileMenuOpen(false);
+                    handleLinkClick(link, e);
+                  }}
+                  className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                    isActive
+                      ? 'bg-lime-400 text-black font-bold'
+                      : 'text-zinc-200 hover:text-white hover:bg-white/[0.06]'
+                  }`}
+                >
+                  <span>{link.label}</span>
+                  {link.badge && (
+                    <span
+                      className={`text-[10px] font-mono px-2 py-0.5 rounded-full font-bold ${
+                        isActive
+                          ? 'bg-black/20 text-black'
+                          : link.badge === 'HOT'
+                          ? 'bg-amber-400/20 text-amber-300'
+                          : 'bg-cyan-500/20 text-cyan-300'
+                      }`}
+                    >
+                      {link.badge}
+                    </span>
+                  )}
+                </a>
+              );
+            })}
 
             <div className="pt-3 mt-2 border-t border-white/10 space-y-2">
               <a
@@ -168,7 +230,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenVipModal }) => {
               >
                 <Users className="w-4 h-4" />
                 <span>Vào Nhóm Zalo Giao Lưu Làm YouTube</span>
-                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>

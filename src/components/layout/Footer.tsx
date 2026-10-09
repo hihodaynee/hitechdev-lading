@@ -27,7 +27,21 @@ const TelegramIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' 
   </svg>
 );
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate?: (view: 'home' | 'tools' | 'store') => void;
+  onOpenVipModal?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenVipModal }) => {
+  const handleNav = (view: 'home' | 'tools' | 'store', hash: string, e: React.MouseEvent) => {
+    if (onNavigate) {
+      e.preventDefault();
+      onNavigate(view);
+      window.location.hash = hash;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="relative mt-12 sm:mt-20 pt-16 pb-12 px-4 sm:px-6 md:px-12 border-t border-white/10 overflow-hidden bg-obsidian-deep/80">
       {/* Massive Background Watermark */}
@@ -42,7 +56,11 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Brand Info */}
           <div className="md:col-span-5 space-y-4">
-            <a href="#" className="flex items-center gap-3">
+            <a
+              href="#/"
+              onClick={(e) => handleNav('home', '#/', e)}
+              className="flex items-center gap-3 cursor-pointer"
+            >
               <div className="w-10 h-10 rounded-full overflow-hidden border border-lime-400/40">
                 <img
                   src="/logo.png"
@@ -116,29 +134,49 @@ export const Footer: React.FC = () => {
           {/* Navigation Links */}
           <div className="md:col-span-3 space-y-3">
             <span className="block text-xs font-mono text-zinc-300 uppercase tracking-wider font-semibold">
-              Hệ Thống Công Cụ
+              Hệ Thống Trang & Menu
             </span>
             <ul className="space-y-2 text-xs font-medium text-zinc-400">
               <li>
-                <a href="#ai-studio" className="hover:text-lime-400 transition-colors flex items-center gap-1.5">
-                  <span>AI Studio</span>
+                <a
+                  href="#/"
+                  onClick={(e) => handleNav('home', '#/', e)}
+                  className="hover:text-lime-400 transition-colors flex items-center gap-1.5 cursor-pointer"
+                >
+                  <span>Trang Chủ</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#/tools"
+                  onClick={(e) => handleNav('tools', '#/tools', e)}
+                  className="hover:text-lime-400 transition-colors flex items-center gap-1.5 cursor-pointer"
+                >
+                  <span>Công Cụ MMO (AI Studio & Auto Video)</span>
                   <span className="text-[9px] font-mono text-lime-400 bg-lime-400/10 px-1.5 py-0.2 rounded">LIVE</span>
                 </a>
               </li>
               <li>
-                <a href="#auto-video" className="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
-                  <span>Auto Video</span>
-                  <span className="text-[9px] font-mono text-cyan-400 bg-cyan-400/10 px-1.5 py-0.2 rounded">SOON</span>
-                </a>
-              </li>
-              <li>
-                <a href="#digital-store" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
-                  <span>Tài Nguyên Số</span>
+                <a
+                  href="#/store"
+                  onClick={(e) => handleNav('store', '#/store', e)}
+                  className="hover:text-amber-400 transition-colors flex items-center gap-1.5 cursor-pointer"
+                >
+                  <span>Kho Tài Nguyên Số (6 Sản Phẩm)</span>
                   <span className="text-[9px] font-mono text-amber-400 bg-amber-400/10 px-1.5 py-0.2 rounded">HOT</span>
                 </a>
               </li>
               <li>
-                <a href="#vip" className="hover:text-white transition-colors">
+                <a
+                  href="#vip"
+                  onClick={(e) => {
+                    if (onOpenVipModal) {
+                      e.preventDefault();
+                      onOpenVipModal();
+                    }
+                  }}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
                   Đặc Quyền Cộng Đồng VIP
                 </a>
               </li>
