@@ -159,7 +159,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <span className="w-2 h-2 rounded-full bg-lime-400 animate-pulse" />
                 <span>SYSTEM OPERATIONAL</span>
               </div>
-              <span className="text-[10px] font-mono text-lime-400 font-bold">STABLE V1.1.2</span>
+              <span className="text-[10px] font-mono text-lime-400 font-bold">STABLE V1.1.3</span>
             </div>
 
             {navLinks.map((link) => {
@@ -206,7 +206,7 @@ export const Header: React.FC<HeaderProps> = ({
                 className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-white/10 text-white border border-white/20 active:scale-95 transition-all"
               >
                 <Download className="w-4 h-4 text-lime-400" />
-                <span>Tải AI Studio v1.1.2 (Setup.exe)</span>
+                <span>Tải AI Studio v1.1.3 (Setup.exe)</span>
               </a>
 
               <button
