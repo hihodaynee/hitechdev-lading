@@ -72,14 +72,14 @@ export const HomeOverview: React.FC<HomeOverviewProps> = ({
                     <span className="text-lime-400 font-mono text-sm">(TOOLS)</span>
                   </h3>
                   <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                    Hệ thống phần mềm độc quyền: <strong>HITech AI Studio (Live v1.1.3)</strong> sản xuất kịch bản, ảnh và giọng đọc tự động; cùng <strong>HITech Auto Video</strong> cào video Douyin và render phụ đề thần tốc.
+                    Hệ thống phần mềm độc quyền: <strong>HITech AI Studio (Live v1.1.4)</strong> sản xuất kịch bản, ảnh và giọng đọc tự động; cùng <strong>HITech Auto Video</strong> cào video Douyin và render phụ đề thần tốc.
                   </p>
                 </div>
 
                 <ul className="space-y-2 text-xs text-zinc-300 font-mono">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0" />
-                    <span>AI Studio v1.1.3: Tải Setup.exe cài đặt ngay</span>
+                    <span>AI Studio v1.1.4: Tải Setup.exe cài đặt ngay</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0" />

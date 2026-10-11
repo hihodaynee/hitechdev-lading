@@ -125,7 +125,7 @@ export const siteConfig: SiteConfig = {
   },
   vipCouponCode: 'HITECHVIP2026',
   aiStudioDownloadUrl:
-    'https://github.com/hihodaynee/ai-studio-releases/releases/download/v1.1.3/HITechDev.AIStudio.F0-stable-Setup.exe',
+    'https://github.com/hihodaynee/ai-studio-releases/releases/download/v1.1.4/HITechDev.AIStudio.F0-stable-Setup.exe',
   downloadLabel: 'Tải AI Studio',
   vipPerks: [
     {
@@ -438,7 +438,7 @@ export const siteConfig: SiteConfig = {
       problemSolved:
         'Tiết kiệm 90% thời gian sáng tạo: Không bí ý tưởng, không văn mẫu AI, không lệch nhân vật và 0đ phí API tạo video/ảnh.',
       downloadUrl:
-        'https://github.com/hihodaynee/ai-studio-releases/releases/download/v1.1.3/HITechDev.AIStudio.F0-stable-Setup.exe',
+        'https://github.com/hihodaynee/ai-studio-releases/releases/download/v1.1.4/HITechDev.AIStudio.F0-stable-Setup.exe',
       downloadLabel: 'Tải AI Studio',
       badges: [
         'Seedance Video MIỄN PHÍ',

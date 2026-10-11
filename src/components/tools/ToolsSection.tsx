@@ -53,7 +53,7 @@ export const ToolsSection: React.FC<ToolsSectionProps> = ({
                 className="font-bold cursor-pointer shadow-lime-glow"
                 icon={<Download className="w-4 h-4 text-black" />}
               >
-                Tải Setup.exe v1.1.3 (Miễn Phí)
+                Tải Setup.exe v1.1.4 (Miễn Phí)
               </Button>
             </a>
 
